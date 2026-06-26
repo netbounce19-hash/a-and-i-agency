@@ -1,0 +1,166 @@
+"use client";
+
+import React from "react";
+import { motion } from "framer-motion";
+import DesktopIcon from "@/components/DesktopIcon";
+import Window from "@/components/Window";
+import PortfolioWindow from "@/components/windows/PortfolioWindow";
+import ServicesWindow from "@/components/windows/ServicesWindow";
+import ContactWindow from "@/components/windows/ContactWindow";
+import { useLang } from "@/context/LangContext";
+
+function BauhausGrid() {
+  return (
+    <svg
+      className="absolute inset-0 w-full h-full pointer-events-none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden
+    >
+      <defs>
+        <pattern id="fine-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+          <path d="M 40 0 L 0 0 0 40" fill="none" stroke="var(--grid-color-fine)" strokeWidth="0.5" />
+        </pattern>
+        <pattern id="coarse-grid" width="200" height="200" patternUnits="userSpaceOnUse">
+          <path d="M 200 0 L 0 0 0 200" fill="none" stroke="var(--grid-color-coarse)" strokeWidth="1" />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#fine-grid)" />
+      <rect width="100%" height="100%" fill="url(#coarse-grid)" />
+    </svg>
+  );
+}
+
+function ConstructivistDecor() {
+  return (
+    <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden>
+      {/* Left accent bar */}
+      <motion.div
+        className="absolute top-0 left-0 w-1 bg-[#E63946]"
+        style={{ height: "40%", opacity: 0.7 }}
+        animate={{ height: ["35%", "45%", "35%"] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+      />
+      {/* Rotating square — top right */}
+      <motion.div
+        className="absolute top-8 right-8 w-24 h-24 border-2 border-[#F4A261]"
+        style={{ opacity: 0.15 }}
+        animate={{ rotate: [0, 90, 0] }}
+        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+      />
+      <motion.div
+        className="absolute top-16 right-16 w-12 h-12 border-2 border-[#F4A261]"
+        style={{ opacity: 0.2 }}
+        animate={{ rotate: [45, 135, 45] }}
+        transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+      />
+      {/* Pulsing circle — bottom left */}
+      <motion.div
+        className="absolute bottom-16 left-12 w-32 h-32 rounded-full border border-[#1D3557]"
+        style={{ opacity: 0.2 }}
+        animate={{ scale: [1, 1.08, 1] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+      />
+      {/* Centre crosshair */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style={{ opacity: 0.06 }}>
+        <div className="w-px h-32 bg-[currentColor] absolute left-1/2 -translate-x-1/2 -top-16" style={{ color: "var(--text-primary)" }} />
+        <div className="h-px w-32 bg-[currentColor] absolute top-1/2 -translate-y-1/2 -left-16" style={{ color: "var(--text-primary)" }} />
+      </div>
+      {/* Diagonal stripe — bottom right */}
+      <div
+        className="absolute bottom-10 right-10 w-40 h-40"
+        style={{
+          opacity: 0.06,
+          background: "repeating-linear-gradient(45deg,#E63946,#E63946 1px,transparent 1px,transparent 10px)",
+        }}
+      />
+    </div>
+  );
+}
+
+export default function Desktop() {
+  const { t } = useLang();
+
+  return (
+    <div
+      className="relative w-full h-full overflow-hidden"
+      style={{ background: "var(--bg-main)", transition: "background 0.25s ease" }}
+    >
+      <BauhausGrid />
+      <div className="crt-overlay absolute inset-0 pointer-events-none" style={{ zIndex: 1 }} aria-hidden />
+      <ConstructivistDecor />
+
+      {/* ── Agency title ── */}
+      <motion.div
+        className="absolute inset-0 flex flex-col items-center justify-center gap-3 pointer-events-none"
+        style={{ zIndex: 2 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5, duration: 0.4 }}
+      >
+        <div
+          className="text-[10px] tracking-[0.5em] uppercase"
+          style={{ fontFamily: "var(--font-mono)", color: "var(--text-dim)" }}
+        >
+          {t.desktop.tagline}
+        </div>
+
+        <div className="relative">
+          <h1
+            className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none text-center"
+            style={{
+              fontFamily: "var(--font-heading)",
+              color: "var(--text-primary)",
+              textShadow: "4px 4px 0px #E63946",
+              transition: "color 0.25s ease",
+            }}
+          >
+            A-AND-I
+          </h1>
+          <div className="absolute -bottom-1 left-0 right-0 h-[3px] bg-[#E63946]" />
+        </div>
+
+        <div
+          className="text-[11px] md:text-xs tracking-[0.4em] uppercase text-center px-4"
+          style={{ fontFamily: "var(--font-mono)", color: "var(--text-muted)", transition: "color 0.25s" }}
+        >
+          {t.desktop.subtitle}
+        </div>
+
+        <motion.div
+          className="mt-6"
+          animate={{ opacity: [0.4, 1, 0.4] }}
+          transition={{ duration: 2.5, repeat: Infinity }}
+        >
+          <span
+            className="text-[10px] tracking-[0.3em] uppercase"
+            style={{ fontFamily: "var(--font-mono)", color: "#E63946" }}
+          >
+            ▸ CLICK ICON TO OPEN MODULE
+          </span>
+        </motion.div>
+      </motion.div>
+
+      {/* ── Desktop icons ── */}
+      <div
+        className="absolute z-10 left-4 top-4 flex flex-col gap-4 md:gap-6 md:pb-14
+          max-md:flex-row max-md:gap-3 max-md:top-auto max-md:bottom-14
+          max-md:left-1/2 max-md:-translate-x-1/2"
+      >
+        <DesktopIcon windowId="portfolio" label={t.icons.portfolio} index={0} />
+        <DesktopIcon windowId="services"  label={t.icons.services}  index={1} />
+        <DesktopIcon windowId="contact"   label={t.icons.contact}   index={2} />
+      </div>
+
+      {/* ── Windows ── */}
+      <Window id="portfolio" title={t.windows.portfolio.title} subtitle={t.windows.portfolio.subtitle} defaultPosition={{ x: 100, y: 30  }} defaultWidth={780}>
+        <PortfolioWindow />
+      </Window>
+      <Window id="services"  title={t.windows.services.title}  subtitle={t.windows.services.subtitle}  defaultPosition={{ x: 160, y: 60  }} defaultWidth={820}>
+        <ServicesWindow />
+      </Window>
+      <Window id="contact"   title={t.windows.contact.title}   subtitle={t.windows.contact.subtitle}   defaultPosition={{ x: 200, y: 50  }} defaultWidth={560}>
+        <ContactWindow />
+      </Window>
+    </div>
+  );
+}

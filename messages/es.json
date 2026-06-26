@@ -1,0 +1,94 @@
+{
+  "nav": {
+    "portfolio": "PORTAFOLIO",
+    "services": "SERVICIOS",
+    "contact": "CONTACTO",
+    "start": "INICIO_SISTEMA"
+  },
+  "desktop": {
+    "tagline": "CONSTRUCTIVISTA_OS v2.0.26",
+    "subtitle": "A-AND-I AGENCY // ESTUDIO DE ARQUITECTURA DIGITAL"
+  },
+  "icons": {
+    "portfolio": "DIR_PORTAFOLIO",
+    "services": "NÚCLEO_AGENCIA",
+    "contact": "TERMINAL_CONTACTO",
+    "folder": "CARPETA"
+  },
+  "windows": {
+    "portfolio": {
+      "title": "//DIRECTORIOS_PORTAFOLIO",
+      "subtitle": "TRABAJOS_SELECCIONADOS // 2022–2026",
+      "projects": [
+        {
+          "id": "01",
+          "name": "Truckers Budget",
+          "tag": "APP_MÓVIL // PWA",
+          "desc": "Aplicación móvil multiplataforma (PWA). Centro financiero logístico. Cálculo instantáneo."
+        },
+        {
+          "id": "02",
+          "name": "Policarbonat-Center",
+          "tag": "TIENDA_B2B // NEXT.JS",
+          "desc": "Tienda digital B2B de alto rendimiento. Calculadora de ingeniería dinámica integrada y carrito inteligente."
+        },
+        {
+          "id": "03",
+          "name": "The Gun Store",
+          "tag": "CATÁLOGO_CORPORATIVO // SEGURO",
+          "desc": "Catálogo corporativo jerárquico estricto. Arquitectura de datos segura."
+        },
+        {
+          "id": "04",
+          "name": "Mother of Flower",
+          "tag": "PORTAFOLIO // VISUAL_PRIMERO",
+          "desc": "Portafolio orgánico estético. Interfaz visual de carga rápida."
+        }
+      ]
+    },
+    "services": {
+      "title": "//NÚCLEO_AGENCIA",
+      "subtitle": "SERVICIOS_CORE // STACK_v3",
+      "columns": [
+        {
+          "id": "01",
+          "title": "NÚCLEO NEXT.JS",
+          "tag": "ARQUITECTURA_WEB",
+          "desc": "Interfaces web de alto rendimiento y optimización SEO. Renderizado en servidor, generación estática y despliegue edge-ready."
+        },
+        {
+          "id": "02",
+          "title": "DESARROLLO_APP",
+          "tag": "SISTEMAS_MÓVILES",
+          "desc": "Soluciones móviles nativas y multiplataforma. React Native, arquitectura PWA y patrones offline-first."
+        },
+        {
+          "id": "03",
+          "title": "AUTOMATIZACIÓN_IA",
+          "tag": "CAPA_INTELIGENCIA",
+          "desc": "Integración de lógica de negocio usando flujos n8n, agentes de IA autónomos e integraciones LLM personalizadas."
+        }
+      ]
+    },
+    "contact": {
+      "title": "//TERMINAL_CONTACTO",
+      "subtitle": "ESTABLECER_CONEXIÓN // ENTRADA_REQUERIDA",
+      "fields": {
+        "email": "INGRESAR_EMAIL",
+        "budget": "INGRESAR_PRESUPUESTO",
+        "task": "DEFINIR_TAREA"
+      },
+      "submit": "EJECUTAR",
+      "success": "// TRANSMISIÓN_EXITOSA. EN ESPERA DE RESPUESTA.",
+      "placeholder": {
+        "email": "tu@email.com",
+        "budget": "ej. $5,000 – $20,000",
+        "task": "Describe los requisitos de tu proyecto..."
+      }
+    }
+  },
+  "taskbar": {
+    "time": "RELOJ_SIS",
+    "lang": "IDIOMA"
+  }
+}

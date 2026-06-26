@@ -1,0 +1,94 @@
+{
+  "nav": {
+    "portfolio": "PORTFOLIO",
+    "services": "SERVICES",
+    "contact": "CONTACT",
+    "start": "SYSTEM_START"
+  },
+  "desktop": {
+    "tagline": "CONSTRUCTIVIST_OS v2.0.26",
+    "subtitle": "A-AND-I AGENCY // DIGITAL ARCHITECTURE STUDIO"
+  },
+  "icons": {
+    "portfolio": "PORTFOLIO_DIR",
+    "services": "AGENCY_KERNEL",
+    "contact": "TERMINAL_CONTACT",
+    "folder": "FOLDER"
+  },
+  "windows": {
+    "portfolio": {
+      "title": "//PORTFOLIO_DIRECTORIES",
+      "subtitle": "SELECTED WORKS // 2022–2026",
+      "projects": [
+        {
+          "id": "01",
+          "name": "Truckers Budget",
+          "tag": "MOBILE_APP // PWA",
+          "desc": "Cross-platform mobile application (PWA). Logistics financial hub. Instant calculation."
+        },
+        {
+          "id": "02",
+          "name": "Policarbonat-Center",
+          "tag": "B2B_STOREFRONT // NEXT.JS",
+          "desc": "High-performance B2B digital storefront. Integrated dynamic engineering calculator and smart cart."
+        },
+        {
+          "id": "03",
+          "name": "The Gun Store",
+          "tag": "CORPORATE_CATALOG // SECURE",
+          "desc": "Strict hierarchical corporate catalog. Secure data architecture."
+        },
+        {
+          "id": "04",
+          "name": "Mother of Flower",
+          "tag": "PORTFOLIO // VISUAL_FIRST",
+          "desc": "Aesthetic organic portfolio. Visual-first fast loading interface."
+        }
+      ]
+    },
+    "services": {
+      "title": "//AGENCY_KERNEL",
+      "subtitle": "CORE_SERVICES // STACK_v3",
+      "columns": [
+        {
+          "id": "01",
+          "title": "NEXT.JS CORE",
+          "tag": "WEB_ARCHITECTURE",
+          "desc": "High-performance, SEO-optimized web interfaces. Server-side rendering, static generation, and edge-ready deployment."
+        },
+        {
+          "id": "02",
+          "title": "APP DEV",
+          "tag": "MOBILE_SYSTEMS",
+          "desc": "Native and cross-platform mobile solutions. React Native, PWA architecture, and offline-first design patterns."
+        },
+        {
+          "id": "03",
+          "title": "AI AUTOMATION",
+          "tag": "INTELLIGENCE_LAYER",
+          "desc": "Business logic integration using n8n workflows, autonomous AI agents, and custom LLM integrations."
+        }
+      ]
+    },
+    "contact": {
+      "title": "//TERMINAL_CONTACT",
+      "subtitle": "ESTABLISH_CONNECTION // INPUT_REQUIRED",
+      "fields": {
+        "email": "ENTER_EMAIL",
+        "budget": "ENTER_BUDGET",
+        "task": "DEFINE_TASK"
+      },
+      "submit": "EXECUTE",
+      "success": "// TRANSMISSION_SUCCESSFUL. STANDBY FOR RESPONSE.",
+      "placeholder": {
+        "email": "your@email.com",
+        "budget": "e.g. $5,000 – $20,000",
+        "task": "Describe your project requirements..."
+      }
+    }
+  },
+  "taskbar": {
+    "time": "SYS_CLOCK",
+    "lang": "LANG"
+  }
+}

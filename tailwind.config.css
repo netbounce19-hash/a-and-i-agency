@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-crt-black: #000000;
+  --color-crt-white: #ffffff;
+  --color-rev-red: #e63946;
+  --color-ind-yellow: #f4a261;
+  --color-blueprint: #1d3557;
+  --color-surface: #0a0a0a;
+  --color-surface-2: #111111;
+  --color-surface-3: #1a1a1a;
+  --color-border: #2a2a2a;
+  --color-terminal-green: #39ff14;
+
+  --font-heading: "Inter", "Helvetica Neue", "Impact", ui-sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", ui-monospace;
+}
