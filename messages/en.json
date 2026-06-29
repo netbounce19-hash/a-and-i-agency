@@ -44,8 +44,12 @@
         {
           "id": "03",
           "name": "The Gun Store",
-          "tag": "CORPORATE_CATALOG // SECURE",
-          "desc": "Strict hierarchical corporate catalog. Secure data architecture."
+          "tag": "E-COMMERCE // BIZZLEY APP",
+          "desc": "Design reflects the cultural code of the legendary Las Vegas location. Features full Bizzley App CRM integration, custom payment system, and automated sales funnels.",
+          "image": "/images/gunstore_logo.png",
+          "links": [
+            { "label": "Website", "url": "https://www.thegunstorelasvegas.net/" }
+          ]
         },
         {
           "id": "04",
