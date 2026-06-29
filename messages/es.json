@@ -23,14 +23,23 @@
         {
           "id": "01",
           "name": "Truckers Budget",
-          "tag": "APP_MÓVIL // PWA",
-          "desc": "Aplicación móvil multiplataforma (PWA). Centro financiero logístico. Cálculo instantáneo."
+          "tag": "FINANZAS // APP iOS",
+          "desc": "El rastreador todo en uno de gastos, ingresos y kilometraje para camioneros. Seguimiento de viáticos estándar del IRS, cargas, gastos y registros IFTA.",
+          "image": "/images/truckersbudget.webp",
+          "links": [
+            { "label": "Sitio Web", "url": "https://truckersbudget.com/" },
+            { "label": "App Store", "url": "https://apps.apple.com/us/app/truckers-budget/id6758877694" }
+          ]
         },
         {
           "id": "02",
           "name": "Policarbonat-Center",
           "tag": "TIENDA_B2B // NEXT.JS",
-          "desc": "Tienda digital B2B de alto rendimiento. Calculadora de ingeniería dinámica integrada y carrito inteligente."
+          "desc": "Tienda digital B2B de alto rendimiento construida en Next.js. Cuenta con un sistema de cálculo inteligente y calculadora de ingeniería dinámica para estimaciones precisas de materiales.",
+          "image": "/images/poly_logo.png",
+          "links": [
+            { "label": "Sitio Web", "url": "https://policarbonat-center.ru/" }
+          ]
         },
         {
           "id": "03",

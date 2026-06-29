@@ -50,14 +50,32 @@ export default function PortfolioWindow() {
                 borderBottom: "2px solid var(--border-subtle)",
               }}
             >
-              <svg viewBox="0 0 300 144" className="absolute inset-0 w-full h-full" preserveAspectRatio="xMidYMid slice">
-                {/* Grid background */}
-                <pattern id={`g${i}`} width="20" height="20" patternUnits="userSpaceOnUse">
-                  <path d="M 20 0 L 0 0 0 20" fill="none" stroke="var(--grid-color-coarse)" strokeWidth="0.5" />
-                </pattern>
-                <rect width="300" height="144" fill={`url(#g${i})`} />
+              {project.image ? (
+                <>
+                  <svg viewBox="0 0 300 144" className="absolute inset-0 w-full h-full" preserveAspectRatio="xMidYMid slice">
+                    <pattern id={`g${i}`} width="20" height="20" patternUnits="userSpaceOnUse">
+                      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="var(--grid-color-coarse)" strokeWidth="0.5" />
+                    </pattern>
+                    <rect width="300" height="144" fill={`url(#g${i})`} />
+                  </svg>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <img 
+                      src={project.image} 
+                      alt={project.name} 
+                      className="w-24 h-24 object-contain rounded-2xl shadow-lg" 
+                      style={{ border: `2px solid ${PROJECT_COLORS[i]}` }} 
+                    />
+                  </div>
+                </>
+              ) : (
+                <svg viewBox="0 0 300 144" className="absolute inset-0 w-full h-full" preserveAspectRatio="xMidYMid slice">
+                  {/* Grid background */}
+                  <pattern id={`g${i}`} width="20" height="20" patternUnits="userSpaceOnUse">
+                    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="var(--grid-color-coarse)" strokeWidth="0.5" />
+                  </pattern>
+                  <rect width="300" height="144" fill={`url(#g${i})`} />
 
-                {i === 0 && <>
+                  {i === 0 && <>
                   <rect x="20" y="20" width="80" height="80" fill="none" stroke={PROJECT_COLORS[0]} strokeWidth="2" />
                   <rect x="40" y="40" width="40" height="40" fill={PROJECT_COLORS[0]} opacity="0.2" />
                   <line x1="120" y1="10" x2="120" y2="134" stroke={PROJECT_COLORS[0]} strokeWidth="1" opacity="0.3" />
@@ -95,6 +113,7 @@ export default function PortfolioWindow() {
                   <text x="170" y="84" fill={PROJECT_COLORS[3]} fontFamily="monospace" fontSize="8" opacity="0.5">PERF: 98/100</text>
                 </>}
               </svg>
+            )}
 
               {/* Index badge */}
               <div
@@ -127,6 +146,23 @@ export default function PortfolioWindow() {
               >
                 {project.desc}
               </p>
+              {project.links && (
+                <div className="flex gap-4 pt-2">
+                  {project.links.map((link: any, idx: number) => (
+                    <a
+                      key={idx}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[11px] md:text-[12px] font-bold uppercase tracking-widest hover:underline"
+                      style={{ fontFamily: "var(--font-mono)", color: PROJECT_COLORS[i] }}
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      [{link.label}]
+                    </a>
+                  ))}
+                </div>
+              )}
             </div>
           </motion.div>
         ))}

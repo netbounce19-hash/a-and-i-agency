@@ -23,14 +23,23 @@
         {
           "id": "01",
           "name": "Truckers Budget",
-          "tag": "MOBILE_APP // PWA",
-          "desc": "Cross-platform mobile application (PWA). Logistics financial hub. Instant calculation."
+          "tag": "FINANCE // iOS APP",
+          "desc": "The all-in-one expense, income, and mileage tracker built for truck drivers. Track IRS standard per diem, settlements, loads, expenses, and IFTA recordkeeping.",
+          "image": "/images/truckersbudget.webp",
+          "links": [
+            { "label": "Website", "url": "https://truckersbudget.com/" },
+            { "label": "App Store", "url": "https://apps.apple.com/us/app/truckers-budget/id6758877694" }
+          ]
         },
         {
           "id": "02",
           "name": "Policarbonat-Center",
           "tag": "B2B_STOREFRONT // NEXT.JS",
-          "desc": "High-performance B2B digital storefront. Integrated dynamic engineering calculator and smart cart."
+          "desc": "High-performance B2B digital storefront built on Next.js. Features a smart calculation system and dynamic engineering calculator for precise material estimates.",
+          "image": "/images/poly_logo.png",
+          "links": [
+            { "label": "Website", "url": "https://policarbonat-center.ru/" }
+          ]
         },
         {
           "id": "03",
