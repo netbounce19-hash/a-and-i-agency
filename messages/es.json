@@ -10,9 +10,9 @@
     "subtitle": "A-AND-I AGENCY // ESTUDIO DE ARQUITECTURA DIGITAL"
   },
   "icons": {
-    "portfolio": "DIR_PORTAFOLIO",
-    "services": "NÚCLEO_AGENCIA",
-    "contact": "TERMINAL_CONTACTO",
+    "portfolio": "NUESTROS PROYECTOS",
+    "services": "NUESTROS SERVICIOS",
+    "contact": "HACER SOLICITUD",
     "folder": "CARPETA"
   },
   "windows": {

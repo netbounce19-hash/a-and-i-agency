@@ -35,28 +35,28 @@ function ConstructivistDecor() {
     <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden>
       {/* Left accent bar */}
       <motion.div
-        className="absolute top-0 left-0 w-1 bg-[#E63946]"
-        style={{ height: "40%", opacity: 0.7 }}
+        className="absolute top-0 left-0 w-1"
+        style={{ height: "40%", opacity: 0.7, background: "var(--accent-primary)" }}
         animate={{ height: ["35%", "45%", "35%"] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
       {/* Rotating square — top right */}
       <motion.div
-        className="absolute top-8 right-8 w-24 h-24 border-2 border-[#F4A261]"
-        style={{ opacity: 0.15 }}
+        className="absolute top-8 right-8 w-24 h-24 border-2"
+        style={{ opacity: 0.3, borderColor: "var(--accent-secondary)" }}
         animate={{ rotate: [0, 90, 0] }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
       />
       <motion.div
-        className="absolute top-16 right-16 w-12 h-12 border-2 border-[#F4A261]"
-        style={{ opacity: 0.2 }}
+        className="absolute top-16 right-16 w-12 h-12 border-2"
+        style={{ opacity: 0.4, borderColor: "var(--accent-primary)" }}
         animate={{ rotate: [45, 135, 45] }}
         transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
       />
       {/* Pulsing circle — bottom left */}
       <motion.div
-        className="absolute bottom-16 left-12 w-32 h-32 rounded-full border border-[#1D3557]"
-        style={{ opacity: 0.2 }}
+        className="absolute bottom-16 left-12 w-32 h-32 rounded-full border"
+        style={{ opacity: 0.3, borderColor: "var(--border-main)" }}
         animate={{ scale: [1, 1.08, 1] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       />
@@ -69,8 +69,8 @@ function ConstructivistDecor() {
       <div
         className="absolute bottom-10 right-10 w-40 h-40"
         style={{
-          opacity: 0.06,
-          background: "repeating-linear-gradient(45deg,#E63946,#E63946 1px,transparent 1px,transparent 10px)",
+          opacity: 0.15,
+          background: "repeating-linear-gradient(45deg,var(--accent-primary),var(--accent-primary) 1px,transparent 1px,transparent 10px)",
         }}
       />
     </div>
@@ -97,30 +97,25 @@ export default function Desktop() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5, duration: 0.4 }}
       >
-        <div
-          className="text-[10px] tracking-[0.5em] uppercase"
-          style={{ fontFamily: "var(--font-mono)", color: "var(--text-dim)" }}
-        >
-          {t.desktop.tagline}
-        </div>
+
 
         <div className="relative">
           <h1
-            className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none text-center"
+            className="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-none text-center"
             style={{
               fontFamily: "var(--font-heading)",
               color: "var(--text-primary)",
-              textShadow: "4px 4px 0px #E63946",
+              textShadow: "6px 6px 0px var(--accent-primary)",
               transition: "color 0.25s ease",
             }}
           >
             A-AND-I
           </h1>
-          <div className="absolute -bottom-1 left-0 right-0 h-[3px] bg-[#E63946]" />
+          <div className="absolute -bottom-1 left-0 right-0 h-[4px]" style={{ background: "var(--accent-primary)" }} />
         </div>
 
         <div
-          className="text-[11px] md:text-xs tracking-[0.4em] uppercase text-center px-4"
+          className="text-[12px] md:text-[14px] tracking-[0.4em] uppercase text-center px-4 font-bold"
           style={{ fontFamily: "var(--font-mono)", color: "var(--text-muted)", transition: "color 0.25s" }}
         >
           {t.desktop.subtitle}
@@ -132,8 +127,8 @@ export default function Desktop() {
           transition={{ duration: 2.5, repeat: Infinity }}
         >
           <span
-            className="text-[10px] tracking-[0.3em] uppercase"
-            style={{ fontFamily: "var(--font-mono)", color: "#E63946" }}
+            className="text-[12px] tracking-[0.3em] uppercase font-bold"
+            style={{ fontFamily: "var(--font-mono)", color: "var(--accent-primary)" }}
           >
             ▸ CLICK ICON TO OPEN MODULE
           </span>

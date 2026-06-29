@@ -9,75 +9,82 @@
   --font-heading: "Inter", "Helvetica Neue", "Impact", ui-sans-serif;
   --font-mono: "JetBrains Mono", "Fira Code", ui-monospace;
 
-  /* Surfaces — warm Bauhaus paper */
-  --bg-main:       #EDE8DF;
-  --bg-surface:    #E4DFDA;
-  --bg-surface-2:  #D9D4CE;
-  --bg-surface-3:  #CBBFB7;
+  /* Surfaces */
+  --bg-main:       #F5F4ED; /* Morning Snow */
+  --bg-surface:    #ECECDC; /* Amazon Mist */
+  --bg-surface-2:  #A0C9CB; /* Aqua Mist */
+  --bg-surface-3:  #ECECDC;
 
   /* Borders */
-  --border-main:   #000000;
-  --border-subtle: #888888;
-  --border-faint:  #AAAAAA;
+  --border-main:   #351E1C; /* Black Kite */
+  --border-subtle: rgba(53, 30, 28, 0.3);
+  --border-faint:  rgba(53, 30, 28, 0.1);
 
   /* Typography */
-  --text-primary:  #000000;
-  --text-secondary:#222222;
-  --text-muted:    #555555;
-  --text-dim:      #888888;
-  --text-faint:    #AAAAAA;
+  --text-primary:  #351E1C; /* Black Kite */
+  --text-secondary:rgba(53, 30, 28, 0.8);
+  --text-muted:    rgba(53, 30, 28, 0.6);
+  --text-dim:      rgba(53, 30, 28, 0.4);
+  --text-faint:    rgba(53, 30, 28, 0.2);
+
+  /* Accents */
+  --accent-primary: #FF6037; /* Toxic Orange */
+  --accent-secondary: #733635; /* Garnet */
 
   /* Taskbar */
-  --taskbar-bg:    #D9D4CE;
-  --titlebar-bg:   #CBBFB7;
+  --taskbar-bg:    #ECECDC;
+  --titlebar-bg:   #A0C9CB;
 
-  /* Terminal (always stays dark) */
-  --terminal-bg:   #0a0a0a;
-  --terminal-green:#39ff14;
+  /* Terminal */
+  --terminal-bg:   #351E1C;
+  --terminal-green:#FF6037;
 
   /* Window shadow */
-  --window-shadow: 8px 8px 0px #000000;
+  --window-shadow: 8px 8px 0px #FF6037;
 
   /* Grain */
   --grain-opacity: 0.05;
 
   /* Scanline */
-  --scanline-color: rgba(0,0,0,0.04);
-  --grid-color-fine:   rgba(0,0,0,0.06);
-  --grid-color-coarse: rgba(0,0,0,0.12);
+  --scanline-color: rgba(53, 30, 28, 0.04);
+  --grid-color-fine:   rgba(53, 30, 28, 0.06);
+  --grid-color-coarse: rgba(53, 30, 28, 0.12);
 }
 
 /* ══════════════════════════════════════════════════════════════════
    CSS CUSTOM PROPERTIES — DARK THEME
 ══════════════════════════════════════════════════════════════════ */
 [data-theme="dark"] {
-  --bg-main:       #030303;
-  --bg-surface:    #0a0a0a;
-  --bg-surface-2:  #111111;
-  --bg-surface-3:  #1a1a1a;
+  --bg-main:       #351E1C; /* Black Kite */
+  --bg-surface:    #2a1614; /* Darker Black Kite */
+  --bg-surface-2:  #733635; /* Garnet */
+  --bg-surface-3:  #351E1C;
 
-  --border-main:   #ffffff;
-  --border-subtle: #2a2a2a;
-  --border-faint:  #1a1a1a;
+  --border-main:   #F5F4ED; /* Morning Snow */
+  --border-subtle: rgba(245, 244, 237, 0.3);
+  --border-faint:  rgba(245, 244, 237, 0.1);
 
-  --text-primary:  #ffffff;
-  --text-secondary:#cccccc;
-  --text-muted:    #888888;
-  --text-dim:      #444444;
-  --text-faint:    #2a2a2a;
+  --text-primary:  #F5F4ED;
+  --text-secondary:rgba(245, 244, 237, 0.8);
+  --text-muted:    rgba(245, 244, 237, 0.6);
+  --text-dim:      rgba(245, 244, 237, 0.4);
+  --text-faint:    rgba(245, 244, 237, 0.2);
 
-  --taskbar-bg:    #080808;
-  --titlebar-bg:   #111111;
+  --accent-primary: #FF6037;
+  --accent-secondary: #A0C9CB;
 
-  --terminal-bg:   #050505;
-  --terminal-green:#39ff14;
+  --taskbar-bg:    #2a1614;
+  --titlebar-bg:   #733635;
 
-  --window-shadow: 8px 8px 0px #E63946;
+  --terminal-bg:   #1a0c0b;
+  --terminal-green:#FF6037;
+
+  --window-shadow: 8px 8px 0px #FF6037;
 
   --grain-opacity: 0.03;
-  --scanline-color: rgba(0,0,0,0.08);
-  --grid-color-fine:   rgba(255,255,255,0.03);
-  --grid-color-coarse: rgba(255,255,255,0.06);
+  --scanline-color: rgba(245, 244, 237, 0.04);
+  --grid-color-fine:   rgba(245, 244, 237, 0.03);
+  --grid-color-coarse: rgba(245, 244, 237, 0.06);
 }
 
 /* ══════════════════════════════════════════════════════════════════

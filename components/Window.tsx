@@ -108,13 +108,13 @@ export default function Window({
                 className="w-6 h-6 flex items-center justify-center font-bold text-[11px] cursor-pointer shrink-0 ml-4"
                 style={{
                   border: "2px solid var(--border-main)",
-                  background: "#E63946",
-                  color: "#fff",
+                  background: "var(--accent-primary)",
+                  color: "var(--bg-main)",
                   fontFamily: "var(--font-mono)",
                   transition: "background 0.07s",
                 }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.background = "#fff"; (e.currentTarget as HTMLButtonElement).style.color = "#000"; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.background = "#E63946"; (e.currentTarget as HTMLButtonElement).style.color = "#fff"; }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.background = "var(--bg-main)"; (e.currentTarget as HTMLButtonElement).style.color = "var(--text-primary)"; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.background = "var(--accent-primary)"; (e.currentTarget as HTMLButtonElement).style.color = "var(--bg-main)"; }}
                 aria-label="Close window"
               >
                 ✕

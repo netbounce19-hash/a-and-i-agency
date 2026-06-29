@@ -7,9 +7,9 @@ import { useWindowManager, WindowId } from "@/context/WindowManagerContext";
 import { useTheme } from "@/context/ThemeContext";
 
 const LANGS: { code: Lang; label: string }[] = [
-  { code: "en", label: "EN" },
-  { code: "ru", label: "RU" },
-  { code: "es", label: "ES" },
+  { code: "en", label: "ENGLISH" },
+  { code: "ru", label: "RUSSIAN" },
+  { code: "es", label: "SPANISH" },
 ];
 
 const WINDOWS: { id: WindowId; labelKey: "portfolio" | "services" | "contact" }[] = [
@@ -23,12 +23,15 @@ export default function Taskbar() {
   const { openWindow, isOpen, focusWindow } = useWindowManager();
   const { theme, toggleTheme } = useTheme();
   const [time, setTime] = useState("");
-  const [showStart, setShowStart] = useState(false);
+  const [date, setDate] = useState("");
 
   // Live clock
   useEffect(() => {
-    const update = () =>
-      setTime(new Date().toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", second: "2-digit" }));
+    const update = () => {
+      const now = new Date();
+      setTime(now.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", second: "2-digit" }));
+      setDate(now.toLocaleDateString("en-GB", { day: "2-digit", month: "2-digit", year: "numeric" }));
+    };
     update();
     const iv = setInterval(update, 1000);
     return () => clearInterval(iv);
@@ -46,71 +49,8 @@ export default function Taskbar() {
         transition: "background 0.25s ease",
       }}
     >
-      {/* ── SYSTEM START ── */}
-      <div className="relative">
-        <motion.button
-          onClick={() => setShowStart((s) => !s)}
-          whileTap={{ scale: 0.95 }}
-          className="h-7 px-3 text-[10px] tracking-[0.22em] font-black uppercase cursor-pointer"
-          style={{
-            fontFamily: "var(--font-heading)",
-            border: "2px solid #E63946",
-            background: "#E63946",
-            color: "#fff",
-          }}
-          onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.background = "transparent"; (e.currentTarget as HTMLButtonElement).style.color = "#E63946"; }}
-          onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.background = "#E63946"; (e.currentTarget as HTMLButtonElement).style.color = "#fff"; }}
-          id="taskbar-start-btn"
-        >
-          ▶ {t.nav.start}
-        </motion.button>
-
-        {/* Start menu */}
-        {showStart && (
-          <motion.div
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.08 }}
-            className="absolute bottom-10 left-0 w-52"
-            style={{
-              background: "var(--bg-surface)",
-              border: "2px solid var(--border-main)",
-              boxShadow: "4px 4px 0px #E63946",
-            }}
-          >
-            <div
-              className="px-3 py-2 text-[10px] tracking-widest"
-              style={{
-                fontFamily: "var(--font-mono)",
-                color: "var(--text-dim)",
-                borderBottom: "2px solid var(--border-subtle)",
-              }}
-            >
-              A-AND-I OS // MENU
-            </div>
-            {WINDOWS.map((w) => (
-              <button
-                key={w.id}
-                onClick={() => { openWindow(w.id); setShowStart(false); }}
-                className="w-full text-left px-3 py-2 text-[11px] tracking-widest uppercase cursor-pointer"
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  color: "var(--text-primary)",
-                  borderBottom: "1px solid var(--border-faint)",
-                  transition: "background 0.07s",
-                }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.background = "#E63946"; (e.currentTarget as HTMLButtonElement).style.color = "#fff"; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.background = "transparent"; (e.currentTarget as HTMLButtonElement).style.color = "var(--text-primary)"; }}
-              >
-                ▸ {t.nav[w.labelKey]}
-              </button>
-            ))}
-          </motion.div>
-        )}
-      </div>
-
-      {/* Divider */}
-      <div className="h-6 w-px mx-1" style={{ background: "var(--border-subtle)" }} />
+      {/* Left side spacer since start button is gone */}
+      <div className="w-1" />
 
       {/* ── Open window tabs ── */}
       <div className="flex items-center gap-1 flex-1 overflow-hidden">
@@ -132,7 +72,7 @@ export default function Taskbar() {
               onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--border-main)"; (e.currentTarget as HTMLButtonElement).style.color = "var(--text-primary)"; }}
               onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--border-subtle)"; (e.currentTarget as HTMLButtonElement).style.color = "var(--text-muted)"; }}
             >
-              <span style={{ color: "#E63946", marginRight: 4 }}>■</span>
+              <span style={{ color: "var(--accent-primary)", marginRight: 4 }}>■</span>
               {t.nav[w.labelKey]}
             </motion.button>
           ) : null
@@ -163,17 +103,18 @@ export default function Taskbar() {
       {/* Divider */}
       <div className="h-6 w-px mx-1" style={{ background: "var(--border-subtle)" }} />
 
-      {/* ── Clock ── */}
+      {/* ── Date & Time ── */}
       <div
         className="h-7 px-3 flex items-center gap-2"
         style={{ border: "2px solid var(--border-subtle)" }}
       >
         <span
-          className="text-[10px] tracking-widest"
-          style={{ fontFamily: "var(--font-mono)", color: "var(--text-dim)" }}
+          className="text-[11px] tracking-wider tabular-nums"
+          style={{ fontFamily: "var(--font-mono)", color: "var(--text-primary)" }}
         >
-          SYS
+          {date}
         </span>
+        <span style={{ color: "var(--border-subtle)" }}>|</span>
         <span
           className="text-[11px] tracking-wider tabular-nums"
           style={{ fontFamily: "var(--font-mono)", color: "var(--text-primary)" }}
@@ -196,8 +137,8 @@ export default function Taskbar() {
               className="h-full px-2 text-[10px] tracking-widest font-bold uppercase cursor-pointer"
               style={{
                 fontFamily: "var(--font-mono)",
-                background: lang === l.code ? "#E63946" : "transparent",
-                color: lang === l.code ? "#fff" : "var(--text-dim)",
+                background: lang === l.code ? "var(--accent-primary)" : "transparent",
+                color: lang === l.code ? "var(--bg-main)" : "var(--text-dim)",
                 transition: "background 0.1s, color 0.1s",
               }}
               id={`lang-toggle-${l.code}`}

@@ -10,9 +10,9 @@
     "subtitle": "A-AND-I AGENCY // СТУДИЯ ЦИФРОВОЙ АРХИТЕКТУРЫ"
   },
   "icons": {
-    "portfolio": "КАТАЛОГ_РАБОТ",
-    "services": "ЯДРО_АГЕНТСТВА",
-    "contact": "ТЕРМИНАЛ_СВЯЗИ",
+    "portfolio": "НАШИ ПРОЕКТЫ",
+    "services": "НАШИ УСЛУГИ",
+    "contact": "ОСТАВИТЬ ЗАЯВКУ",
     "folder": "ПАПКА"
   },
   "windows": {

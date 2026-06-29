@@ -10,9 +10,9 @@
     "subtitle": "A-AND-I AGENCY // DIGITAL ARCHITECTURE STUDIO"
   },
   "icons": {
-    "portfolio": "PORTFOLIO_DIR",
-    "services": "AGENCY_KERNEL",
-    "contact": "TERMINAL_CONTACT",
+    "portfolio": "OUR PROJECTS",
+    "services": "OUR SERVICES",
+    "contact": "MAKE REQUEST",
     "folder": "FOLDER"
   },
   "windows": {

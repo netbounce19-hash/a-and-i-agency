@@ -78,15 +78,15 @@ export default function ContactWindow() {
         {lines.map((line, i) => (
           <div
             key={i}
-            className="text-[12px] leading-relaxed"
+            className="text-[14px] leading-relaxed"
             style={{
               fontFamily: "var(--font-mono)",
               color: line.startsWith("//")
                 ? "var(--terminal-green)"
                 : line.startsWith(">")
-                ? "#F4A261"
+                ? "var(--accent-secondary)"
                 : line.startsWith("████")
-                ? "#E63946"
+                ? "var(--accent-primary)"
                 : "#888",
             }}
           >
@@ -95,7 +95,7 @@ export default function ContactWindow() {
         ))}
         {/* Live cursor */}
         <div
-          className="text-[12px]"
+          className="text-[14px]"
           style={{ fontFamily: "var(--font-mono)", color: "var(--terminal-green)" }}
         >
           {cursor ? "▋" : "\u00A0"}
@@ -120,7 +120,7 @@ export default function ContactWindow() {
               {/* Email */}
               <div>
                 <label
-                  className="block text-[11px] tracking-widest mb-1 font-bold"
+                  className="block text-[13px] tracking-widest mb-1 font-bold"
                   style={{ fontFamily: "var(--font-mono)", color: "var(--terminal-green)" }}
                 >
                   {">"} {contact.fields.email}:
@@ -131,7 +131,7 @@ export default function ContactWindow() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder={contact.placeholder.email}
                   required
-                  className="w-full outline-none px-3 py-2 text-[13px]"
+                  className="w-full outline-none px-3 py-2 text-[15px]"
                   style={{
                     fontFamily: "var(--font-mono)",
                     background: "var(--terminal-bg)",
@@ -147,8 +147,8 @@ export default function ContactWindow() {
               {/* Budget */}
               <div>
                 <label
-                  className="block text-[11px] tracking-widest mb-1 font-bold"
-                  style={{ fontFamily: "var(--font-mono)", color: "#F4A261" }}
+                  className="block text-[13px] tracking-widest mb-1 font-bold"
+                  style={{ fontFamily: "var(--font-mono)", color: "var(--accent-secondary)" }}
                 >
                   {">"} {contact.fields.budget}:
                 </label>
@@ -158,15 +158,15 @@ export default function ContactWindow() {
                   onChange={(e) => setBudget(e.target.value)}
                   placeholder={contact.placeholder.budget}
                   required
-                  className="w-full outline-none px-3 py-2 text-[13px]"
+                  className="w-full outline-none px-3 py-2 text-[15px]"
                   style={{
                     fontFamily: "var(--font-mono)",
                     background: "var(--terminal-bg)",
                     border: "2px solid var(--border-subtle)",
-                    color: "#F4A261",
+                    color: "var(--accent-secondary)",
                     transition: "border-color 0.1s",
                   }}
-                  onFocus={(e) => (e.currentTarget.style.borderColor = "#F4A261")}
+                  onFocus={(e) => (e.currentTarget.style.borderColor = "var(--accent-secondary)")}
                   onBlur={(e)  => (e.currentTarget.style.borderColor = "var(--border-subtle)")}
                 />
               </div>
@@ -174,8 +174,8 @@ export default function ContactWindow() {
               {/* Task */}
               <div>
                 <label
-                  className="block text-[11px] tracking-widest mb-1 font-bold"
-                  style={{ fontFamily: "var(--font-mono)", color: "#E63946" }}
+                  className="block text-[13px] tracking-widest mb-1 font-bold"
+                  style={{ fontFamily: "var(--font-mono)", color: "var(--accent-primary)" }}
                 >
                   {">"} {contact.fields.task}:
                 </label>
@@ -185,7 +185,7 @@ export default function ContactWindow() {
                   placeholder={contact.placeholder.task}
                   required
                   rows={3}
-                  className="w-full outline-none px-3 py-2 resize-none text-[13px]"
+                  className="w-full outline-none px-3 py-2 resize-none text-[15px]"
                   style={{
                     fontFamily: "var(--font-mono)",
                     background: "var(--terminal-bg)",
@@ -193,7 +193,7 @@ export default function ContactWindow() {
                     color: "#fff",
                     transition: "border-color 0.1s",
                   }}
-                  onFocus={(e) => (e.currentTarget.style.borderColor = "#E63946")}
+                  onFocus={(e) => (e.currentTarget.style.borderColor = "var(--accent-primary)")}
                   onBlur={(e)  => (e.currentTarget.style.borderColor = "var(--border-subtle)")}
                 />
               </div>
@@ -203,15 +203,15 @@ export default function ContactWindow() {
                 type="submit"
                 whileHover={{ scale: 1.015 }}
                 whileTap={{ scale: 0.985 }}
-                className="w-full py-4 text-white font-black text-[13px] tracking-[0.4em] uppercase cursor-pointer"
+                className="w-full py-4 text-white font-black text-[15px] tracking-[0.4em] uppercase cursor-pointer"
                 style={{
                   fontFamily: "var(--font-heading)",
-                  background: "#E63946",
-                  border: "2px solid #E63946",
+                  background: "var(--accent-primary)",
+                  border: "2px solid var(--accent-primary)",
                   transition: "background 0.1s",
                 }}
-                onMouseEnter={(e) => ((e.currentTarget as HTMLButtonElement).style.background = "#c62d39")}
-                onMouseLeave={(e) => ((e.currentTarget as HTMLButtonElement).style.background = "#E63946")}
+                onMouseEnter={(e) => ((e.currentTarget as HTMLButtonElement).style.background = "var(--accent-secondary)")}
+                onMouseLeave={(e) => ((e.currentTarget as HTMLButtonElement).style.background = "var(--accent-primary)")}
               >
                 ▶ {contact.submit}
               </motion.button>
@@ -224,14 +224,14 @@ export default function ContactWindow() {
               className="text-center py-10 space-y-5"
             >
               <div
-                className="text-[13px] tracking-widest font-bold"
+                className="text-[15px] tracking-widest font-bold"
                 style={{ fontFamily: "var(--font-mono)", color: "var(--terminal-green)" }}
               >
                 {contact.success}
               </div>
               <button
                 onClick={handleReset}
-                className="px-8 py-3 text-[11px] tracking-widest uppercase cursor-pointer"
+                className="px-8 py-3 text-[13px] tracking-widest uppercase cursor-pointer font-bold"
                 style={{
                   fontFamily: "var(--font-mono)",
                   border: "2px solid var(--border-subtle)",

@@ -4,7 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useLang } from "@/context/LangContext";
 
-const PROJECT_COLORS = ["#E63946", "#F4A261", "#1D3557", "#39ff14"];
+const PROJECT_COLORS = ["#FF6037", "#733635", "#351E1C", "#A0C9CB"];
 
 export default function PortfolioWindow() {
   const { t } = useLang();
@@ -18,7 +18,7 @@ export default function PortfolioWindow() {
         style={{ borderBottom: "1px solid var(--border-subtle)" }}
       >
         <span
-          className="text-[11px] tracking-[0.25em] uppercase"
+          className="text-[12px] md:text-[13px] tracking-[0.25em] uppercase"
           style={{ fontFamily: "var(--font-mono)", color: "var(--text-dim)" }}
         >
           ■ LOADED 4 ENTRIES // SORT: CHRONOLOGICAL_DESC
@@ -101,7 +101,7 @@ export default function PortfolioWindow() {
                 className="absolute top-2 right-2 w-8 h-8 flex items-center justify-center"
                 style={{ border: `2px solid ${PROJECT_COLORS[i]}`, background: "var(--bg-surface)" }}
               >
-                <span className="text-[11px] font-bold" style={{ fontFamily: "var(--font-mono)", color: PROJECT_COLORS[i] }}>
+                <span className="text-[13px] font-bold" style={{ fontFamily: "var(--font-mono)", color: PROJECT_COLORS[i] }}>
                   {project.id}
                 </span>
               </div>
@@ -110,19 +110,19 @@ export default function PortfolioWindow() {
             {/* Project info */}
             <div className="p-4 space-y-2" style={{ background: "var(--bg-surface)" }}>
               <h3
-                className="text-[15px] font-black uppercase tracking-wide leading-tight"
+                className="text-[17px] md:text-[19px] font-black uppercase tracking-wide leading-tight"
                 style={{ fontFamily: "var(--font-heading)", color: "var(--text-primary)" }}
               >
                 {project.name}
               </h3>
               <p
-                className="text-[10px] tracking-widest uppercase font-bold"
+                className="text-[11px] md:text-[12px] tracking-widest uppercase font-bold"
                 style={{ fontFamily: "var(--font-mono)", color: PROJECT_COLORS[i] }}
               >
                 {project.tag}
               </p>
               <p
-                className="text-[12px] leading-relaxed"
+                className="text-[13px] md:text-[15px] leading-relaxed font-medium"
                 style={{ fontFamily: "var(--font-mono)", color: "var(--text-muted)" }}
               >
                 {project.desc}
@@ -135,7 +135,7 @@ export default function PortfolioWindow() {
       {/* Footer */}
       <div className="mt-6 pt-3" style={{ borderTop: "1px solid var(--border-faint)" }}>
         <span
-          className="text-[10px] tracking-widest"
+          className="text-[11px] md:text-[12px] tracking-widest"
           style={{ fontFamily: "var(--font-mono)", color: "var(--text-dim)" }}
         >
           ▸ PORTFOLIO_DIR // {portfolio.projects.length} PROJECTS INDEXED // STATUS: ACTIVE
