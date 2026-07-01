@@ -8,6 +8,9 @@ import PortfolioWindow from "@/components/windows/PortfolioWindow";
 import ServicesWindow from "@/components/windows/ServicesWindow";
 import ContactWindow from "@/components/windows/ContactWindow";
 import { useLang } from "@/context/LangContext";
+import { AnimatePresence } from "framer-motion";
+import { useWindowManager } from "@/context/WindowManagerContext";
+import PortfolioSection from "@/components/PortfolioSection";
 
 function BauhausGrid() {
   return (
@@ -79,6 +82,8 @@ function ConstructivistDecor() {
 
 export default function Desktop() {
   const { t } = useLang();
+  const { isOpen } = useWindowManager();
+  const isPortfolioOpen = isOpen("portfolio");
 
   return (
     <div
@@ -89,52 +94,55 @@ export default function Desktop() {
       <div className="crt-overlay absolute inset-0 pointer-events-none" style={{ zIndex: 1 }} aria-hidden />
       <ConstructivistDecor />
 
-      {/* ── Agency title ── */}
-      <motion.div
-        className="absolute inset-0 flex flex-col items-center justify-center gap-3 pointer-events-none"
-        style={{ zIndex: 2 }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5, duration: 0.4 }}
-      >
-
-
-        <div className="relative">
-          <h1
-            className="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-none text-center"
-            style={{
-              fontFamily: "var(--font-heading)",
-              color: "var(--text-primary)",
-              textShadow: "6px 6px 0px var(--accent-primary)",
-              transition: "color 0.25s ease",
-            }}
+      <AnimatePresence>
+        {!isPortfolioOpen && (
+          <motion.div
+            key="agency-title"
+            className="absolute inset-0 flex flex-col items-center justify-center gap-3 pointer-events-none"
+            style={{ zIndex: 2 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0, transition: { duration: 0.3 } }}
+            transition={{ delay: 0.2, duration: 0.4 }}
           >
-            A-AND-I
-          </h1>
-          <div className="absolute -bottom-1 left-0 right-0 h-[4px]" style={{ background: "var(--accent-primary)" }} />
-        </div>
+            <div className="relative">
+              <h1
+                className="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-none text-center"
+                style={{
+                  fontFamily: "var(--font-heading)",
+                  color: "var(--text-primary)",
+                  textShadow: "6px 6px 0px var(--accent-primary)",
+                  transition: "color 0.25s ease",
+                }}
+              >
+                A-AND-I
+              </h1>
+              <div className="absolute -bottom-1 left-0 right-0 h-[4px]" style={{ background: "var(--accent-primary)" }} />
+            </div>
 
-        <div
-          className="text-[12px] md:text-[14px] tracking-[0.4em] uppercase text-center px-4 font-bold"
-          style={{ fontFamily: "var(--font-mono)", color: "var(--text-muted)", transition: "color 0.25s" }}
-        >
-          {t.desktop.subtitle}
-        </div>
+            <div
+              className="text-[12px] md:text-[14px] tracking-[0.4em] uppercase text-center px-4 font-bold"
+              style={{ fontFamily: "var(--font-mono)", color: "var(--text-muted)", transition: "color 0.25s" }}
+            >
+              {t.desktop.subtitle}
+            </div>
 
-        {/* ── Desktop icons ── */}
-        <div className="mt-24 md:mt-40 flex flex-col md:flex-row flex-wrap items-center justify-center gap-6 md:gap-8 pointer-events-auto w-full max-w-4xl px-4">
-          <DesktopIcon windowId="portfolio" label={t.icons.portfolio} index={0} />
-          <DesktopIcon windowId="services"  label={t.icons.services}  index={1} />
-          <DesktopIcon windowId="contact"   label={t.icons.contact}   index={2} />
-        </div>
-      </motion.div>
+            {/* ── Desktop icons ── */}
+            <div className="mt-24 md:mt-40 flex flex-col md:flex-row flex-wrap items-center justify-center gap-6 md:gap-8 pointer-events-auto w-full max-w-4xl px-4">
+              <DesktopIcon windowId="portfolio" label={t.icons.portfolio} index={0} />
+              <DesktopIcon windowId="services"  label={t.icons.services}  index={1} />
+              <DesktopIcon windowId="contact"   label={t.icons.contact}   index={2} />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-
+      <AnimatePresence>
+        {isPortfolioOpen && <PortfolioSection key="portfolio-section" />}
+      </AnimatePresence>
 
       {/* ── Windows ── */}
-      <Window id="portfolio" title={t.windows.portfolio.title} subtitle={t.windows.portfolio.subtitle} defaultPosition={{ x: 100, y: 30  }} defaultWidth={780}>
-        <PortfolioWindow />
-      </Window>
+
       <Window id="services"  title={t.windows.services.title}  subtitle={t.windows.services.subtitle}  defaultPosition={{ x: 160, y: 60  }} defaultWidth={820}>
         <ServicesWindow />
       </Window>
