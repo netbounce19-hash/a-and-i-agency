@@ -20,7 +20,7 @@ export default function PortfolioSection() {
       exit={{ opacity: 0, y: 20 }}
       transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
     >
-      <div className="max-w-7xl mx-auto w-full px-6 md:px-12 lg:px-20">
+      <div className="w-[90%] md:w-[85%] max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-20 pointer-events-auto">
           <div>
           <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter" style={{ fontFamily: "var(--font-heading)", color: "var(--text-primary)" }}>
@@ -55,7 +55,7 @@ export default function PortfolioSection() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 + i * 0.1, duration: 0.5 }}
-            className="flex flex-col lg:flex-row justify-between items-start gap-12 lg:gap-16 border-t-4 pt-12 pb-8 relative group"
+            className="flex flex-col lg:flex-row justify-between items-start gap-12 lg:gap-16 border-t-[8px] pt-16 pb-12 relative group"
             style={{ borderColor: "var(--text-primary)" }}
           >
             <div className="absolute -top-6 right-4 text-8xl md:text-[12rem] font-black opacity-[0.04] pointer-events-none leading-none select-none" style={{ fontFamily: "var(--font-heading)" }}>
@@ -111,14 +111,17 @@ export default function PortfolioSection() {
             </div>
             
             {project.image && (
-              <div className="w-full sm:w-2/3 md:w-1/2 lg:w-1/4 max-w-[320px] relative z-10 shrink-0 mx-auto lg:mx-0 mt-8 lg:mt-0">
-                <div className="absolute inset-0 translate-x-3 translate-y-3 border-2 transition-transform duration-500 group-hover:translate-x-4 group-hover:translate-y-4" style={{ backgroundColor: "var(--accent-primary)", borderColor: "var(--text-primary)" }} aria-hidden></div>
+              <div className="w-full sm:w-2/3 md:w-1/2 lg:w-[350px] relative z-10 shrink-0 mx-auto lg:mx-0 mt-8 lg:mt-0">
+                {/* Constructivist Layered Frame */}
+                <div className="absolute inset-0 translate-x-4 translate-y-4 transition-transform duration-500 group-hover:translate-x-6 group-hover:translate-y-6" style={{ backgroundColor: "var(--accent-primary)" }} aria-hidden></div>
+                <div className="absolute inset-0 translate-x-2 translate-y-2" style={{ backgroundColor: "var(--text-primary)" }} aria-hidden></div>
+                
                 <div className="relative aspect-[4/3] border-4 overflow-hidden bg-[var(--bg-surface-2)]" style={{ borderColor: "var(--text-primary)" }}>
                   <Image 
                     src={project.image} 
                     alt={project.name}
                     fill
-                    className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                    className="object-cover grayscale hover:grayscale-0 transition-transform duration-700 hover:scale-105"
                   />
                 </div>
               </div>
