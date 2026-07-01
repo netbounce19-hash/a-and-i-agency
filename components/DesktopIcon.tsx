@@ -27,33 +27,32 @@ export default function DesktopIcon({ windowId, label, index }: DesktopIconProps
       onClick={() => openWindow(windowId)}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      initial={{ opacity: 0, x: -20 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ delay: index * 0.1 + 0.3, duration: 0.3 }}
-      className="flex items-center cursor-pointer outline-none text-left group"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      whileTap={{ x: 4, y: 4, boxShadow: "0px 0px 0px transparent" }}
+      transition={{ 
+        delay: index * 0.1 + 0.3, 
+        duration: 0.2 
+      }}
+      className="cursor-pointer outline-none border-2 px-6 py-3 md:px-10 md:py-4 backdrop-blur-sm"
       aria-label={`Open ${label}`}
       id={`desktop-icon-${windowId}`}
+      style={{
+        borderColor: active || hovered ? accent : "var(--border-main)",
+        background: active ? `${accent}15` : (hovered ? "var(--bg-main)" : "transparent"),
+        boxShadow: active || hovered ? `4px 4px 0px ${accent}` : "4px 4px 0px var(--text-primary)",
+        transition: "border-color 0.2s, background 0.2s, box-shadow 0.2s",
+      }}
     >
       <div 
-        className="text-base md:text-lg font-medium tracking-[0.2em] transition-all duration-300 uppercase relative"
+        className="text-base md:text-lg font-black tracking-[0.15em] uppercase"
         style={{
           fontFamily: "var(--font-mono)",
-          color: active ? accent : (hovered ? "var(--text-primary)" : "var(--text-muted)"),
+          color: active || hovered ? accent : "var(--text-primary)",
+          transition: "color 0.2s",
         }}
       >
-        <span 
-           className="absolute left-0 top-1/2 -translate-y-1/2 -ml-4 transition-all duration-300"
-           style={{ 
-             opacity: hovered || active ? 1 : 0, 
-             color: accent,
-             transform: hovered || active ? "translateY(-50%) translateX(0)" : "translateY(-50%) translateX(10px)"
-           }}
-        >
-          ▸
-        </span>
-        <span className="relative z-10 transition-transform duration-300 block" style={{ transform: hovered || active ? "translateX(4px)" : "translateX(0)" }}>
-          {label}
-        </span>
+        {label}
       </div>
     </motion.button>
   );
