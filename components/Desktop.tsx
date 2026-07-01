@@ -122,7 +122,7 @@ export default function Desktop() {
         </div>
 
         {/* ── Desktop icons ── */}
-        <div className="mt-20 md:mt-32 flex flex-col items-center justify-center gap-6 pointer-events-auto w-full max-w-md px-4">
+        <div className="mt-24 md:mt-40 flex flex-col md:flex-row flex-wrap items-center justify-center gap-6 md:gap-8 pointer-events-auto w-full max-w-4xl px-4">
           <DesktopIcon windowId="portfolio" label={t.icons.portfolio} index={0} />
           <DesktopIcon windowId="services"  label={t.icons.services}  index={1} />
           <DesktopIcon windowId="contact"   label={t.icons.contact}   index={2} />
