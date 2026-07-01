@@ -1,7 +1,7 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useLang } from "@/context/LangContext";
 import { useWindowManager } from "@/context/WindowManagerContext";
 
@@ -34,6 +34,8 @@ export default function ServicesSection() {
   const { closeWindow } = useWindowManager();
   const services = t.windows.services;
   
+  const [activeCol, setActiveCol] = useState<string | null>(null);
+
   return (
     <motion.div 
       className="absolute inset-0 z-50 overflow-y-auto overflow-x-hidden bg-[var(--bg-main)] pt-48 md:pt-[25vh] pb-32 flex flex-col items-center"
@@ -76,6 +78,7 @@ export default function ServicesSection() {
           {services.columns.map((col: any, i: number) => (
             <motion.div 
               key={col.id}
+              onMouseEnter={() => setActiveCol(col.id)}
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 + i * 0.1, duration: 0.5 }}
@@ -145,6 +148,76 @@ export default function ServicesSection() {
             </motion.div>
           ))}
         </div>
+
+        {/* App Dev Hover Section */}
+        <AnimatePresence>
+          {activeCol === '02' && services.appDevHover && (
+            <motion.div
+              initial={{ opacity: 0, height: 0, marginTop: 0 }}
+              animate={{ opacity: 1, height: "auto", marginTop: 64 }}
+              exit={{ opacity: 0, height: 0, marginTop: 0 }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              className="relative w-full rounded-[2rem] overflow-hidden bg-[#e5e0d4] pointer-events-auto"
+            >
+              {/* Massive Background Typography */}
+              <div className="absolute inset-0 flex items-center justify-between overflow-hidden opacity-90 pointer-events-none px-4 md:px-12 select-none">
+                <span className="text-[25vw] md:text-[30vw] font-black leading-none text-[#1a1a1a] tracking-tighter" style={{ fontFamily: "var(--font-heading)" }}>
+                  {services.appDevHover.bgText[0]}
+                </span>
+                <span className="text-[25vw] md:text-[30vw] font-black leading-none text-[#1a1a1a] tracking-tighter" style={{ fontFamily: "var(--font-heading)" }}>
+                  {services.appDevHover.bgText[1]}
+                </span>
+              </div>
+
+              <div className="relative z-10 flex flex-col md:flex-row items-center justify-center gap-12 md:gap-24 p-12 md:p-24 min-h-[600px]">
+                
+                {/* Left side: Steps */}
+                <div className="flex-1 max-w-lg space-y-6 bg-[#e5e0d4]/80 backdrop-blur-sm p-8 rounded-3xl md:bg-transparent md:backdrop-blur-none md:p-0">
+                  <h4 className="text-3xl md:text-5xl font-black uppercase tracking-tighter text-[#1a1a1a] mb-12" style={{ fontFamily: "var(--font-heading)" }}>
+                    {services.appDevHover.title}
+                  </h4>
+                  <div className="space-y-6">
+                    {services.appDevHover.steps.map((step: string, index: number) => (
+                      <motion.div 
+                        key={index}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.2 + index * 0.05 }}
+                        className="flex items-center gap-4 text-[#1a1a1a]"
+                      >
+                        <div className="w-3 h-3 rounded-full bg-[#1a1a1a]" />
+                        <span className="text-lg md:text-2xl font-bold tracking-tight" style={{ fontFamily: "var(--font-heading)" }}>
+                          {step}
+                        </span>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Right side: Phone Mockup */}
+                <motion.div 
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className="flex-shrink-0"
+                >
+                  <div className="relative w-[280px] h-[580px] md:w-[340px] md:h-[700px] border-[12px] border-[#1a1a1a] rounded-[3rem] overflow-hidden bg-black shadow-2xl">
+                    {/* Notch */}
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-7 bg-[#1a1a1a] rounded-b-2xl z-20" />
+                    
+                    {/* App Screenshot */}
+                    <img 
+                      src="/images/truckersbudget.webp" 
+                      alt="App Screenshot" 
+                      className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity duration-300"
+                    />
+                  </div>
+                </motion.div>
+
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </motion.div>
   );

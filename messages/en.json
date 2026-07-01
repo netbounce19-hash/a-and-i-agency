@@ -75,7 +75,20 @@
           "tag": "INTELLIGENCE_LAYER",
           "desc": "Building custom AI automations and solutions for your business processes. We integrate autonomous agents, n8n workflows, and specialized LLMs."
         }
-      ]
+      ],
+      "appDevHover": {
+        "title": "APP DEV LIFECYCLE",
+        "bgText": ["APP", "DEV"],
+        "steps": [
+          "1. Concept & Solution",
+          "2. MVP Development",
+          "3. Design & Architecture",
+          "4. Frontend & Backend",
+          "5. Security Implementation",
+          "6. Payment Systems Setup",
+          "7. App Store Deployment"
+        ]
+      }
     },
     "contact": {
       "title": "//TERMINAL_CONTACT",
