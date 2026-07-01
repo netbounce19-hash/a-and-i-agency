@@ -4,7 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import DesktopIcon from "@/components/DesktopIcon";
 import Window from "@/components/Window";
-import PortfolioWindow from "@/components/windows/PortfolioWindow";
+
 import ServicesWindow from "@/components/windows/ServicesWindow";
 import ContactWindow from "@/components/windows/ContactWindow";
 import { useLang } from "@/context/LangContext";
