@@ -14,7 +14,7 @@ export default function PortfolioSection() {
   
   return (
     <motion.div 
-      className="absolute inset-0 z-50 overflow-y-auto overflow-x-hidden bg-[var(--bg-main)]/90 backdrop-blur-md pt-20 pb-32 flex flex-col items-center"
+      className="absolute inset-0 z-50 overflow-y-auto overflow-x-hidden bg-[var(--bg-main)] pt-20 pb-32 flex flex-col items-center"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 20 }}

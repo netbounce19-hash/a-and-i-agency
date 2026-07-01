@@ -50,12 +50,6 @@
           "links": [
             { "label": "Website", "url": "https://www.thegunstorelasvegas.net/" }
           ]
-        },
-        {
-          "id": "04",
-          "name": "Mother of Flower",
-          "tag": "PORTFOLIO // VISUAL_FIRST",
-          "desc": "Aesthetic organic portfolio. Visual-first fast loading interface."
         }
       ]
     },
