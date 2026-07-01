@@ -24,7 +24,7 @@
           "id": "01",
           "name": "Truckers Budget",
           "tag": "FINANCE // iOS APP",
-          "desc": "The all-in-one expense, income, and mileage tracker built for truck drivers. Track IRS standard per diem, settlements, loads, expenses, and IFTA recordkeeping.",
+          "desc": "The all-in-one expense, income, and mileage tracker built for truck drivers. Track IRS standard per diem, settlements, loads, expenses, and IFTA recordkeeping. Includes an AI receipt scanner with automation, and online marketing with the creation of an AI influencer.",
           "image": "/images/truckersbudget.webp",
           "links": [
             { "label": "Website", "url": "https://truckersbudget.com/" },

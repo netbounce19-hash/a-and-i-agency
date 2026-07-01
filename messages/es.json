@@ -24,7 +24,7 @@
           "id": "01",
           "name": "Truckers Budget",
           "tag": "FINANZAS // APP iOS",
-          "desc": "El rastreador todo en uno de gastos, ingresos y kilometraje para camioneros. Seguimiento de viáticos estándar del IRS, cargas, gastos y registros IFTA.",
+          "desc": "El rastreador todo en uno de gastos, ingresos y kilometraje para camioneros. Seguimiento de viáticos estándar del IRS, cargas, gastos y registros IFTA. Incluye un escáner de recibos por IA con automatización y marketing online con la creación de un influencer de IA.",
           "image": "/images/truckersbudget.webp",
           "links": [
             { "label": "Sitio Web", "url": "https://truckersbudget.com/" },

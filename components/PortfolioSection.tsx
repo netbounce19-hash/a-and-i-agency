@@ -110,22 +110,37 @@ export default function PortfolioSection() {
               )}
             </div>
             
-            {project.image && (
-              <div className="w-full sm:w-2/3 md:w-1/2 lg:w-[350px] relative z-10 shrink-0 mx-auto lg:mx-0 mt-8 lg:mt-0">
-                {/* Constructivist Layered Frame */}
-                <div className="absolute inset-0 translate-x-4 translate-y-4 transition-transform duration-500 group-hover:translate-x-6 group-hover:translate-y-6" style={{ backgroundColor: "var(--accent-primary)" }} aria-hidden></div>
-                <div className="absolute inset-0 translate-x-2 translate-y-2" style={{ backgroundColor: "var(--text-primary)" }} aria-hidden></div>
-                
-                <div className="relative aspect-[4/3] border-4 overflow-hidden bg-[var(--bg-surface-2)]" style={{ borderColor: "var(--text-primary)" }}>
-                  <Image 
-                    src={project.image} 
-                    alt={project.name}
-                    fill
-                    className="object-cover grayscale hover:grayscale-0 transition-transform duration-700 hover:scale-105"
-                  />
+            {project.image && (() => {
+              const ImageContent = (
+                <>
+                  {/* Constructivist Layered Frame */}
+                  <div className="absolute inset-0 translate-x-4 translate-y-4 transition-transform duration-500 group-hover:translate-x-6 group-hover:translate-y-6" style={{ backgroundColor: "var(--accent-primary)" }} aria-hidden></div>
+                  <div className="absolute inset-0 translate-x-2 translate-y-2" style={{ backgroundColor: "var(--text-primary)" }} aria-hidden></div>
+                  <div className="relative aspect-[4/3] border-4 overflow-hidden bg-[var(--bg-surface-2)]" style={{ borderColor: "var(--text-primary)" }}>
+                    <Image 
+                      src={project.image} 
+                      alt={project.name}
+                      fill
+                      className="object-cover grayscale hover:grayscale-0 transition-transform duration-700 hover:scale-105"
+                    />
+                  </div>
+                </>
+              );
+
+              if (project.links && project.links.length > 0) {
+                return (
+                  <a href={project.links[0].url} target="_blank" rel="noopener noreferrer" className="w-full sm:w-2/3 md:w-1/2 lg:w-[350px] relative z-10 shrink-0 mx-auto lg:mx-0 mt-8 lg:mt-0 block cursor-pointer">
+                    {ImageContent}
+                  </a>
+                );
+              }
+              
+              return (
+                <div className="w-full sm:w-2/3 md:w-1/2 lg:w-[350px] relative z-10 shrink-0 mx-auto lg:mx-0 mt-8 lg:mt-0">
+                  {ImageContent}
                 </div>
-              </div>
-            )}
+              );
+            })()}
           </motion.div>
         ))}
         </div>
