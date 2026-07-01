@@ -80,13 +80,13 @@
         "title": "APP DEV LIFECYCLE",
         "bgText": ["APP", "DEV"],
         "steps": [
-          "1. Concept & Solution",
-          "2. MVP Development",
-          "3. Design & Architecture",
-          "4. Frontend & Backend",
-          "5. Security Implementation",
-          "6. Payment Systems Setup",
-          "7. App Store Deployment"
+          "1. Concept & Solution: Market analysis, prototyping, and architecture planning",
+          "2. MVP Development: Building core functionality for a rapid time-to-market",
+          "3. UI/UX Design: Intuitive interfaces tailored to your target audience",
+          "4. Frontend & Backend: Robust, scalable code and secure API development",
+          "5. Security Implementation: Data protection, encryption, and compliance",
+          "6. Payment Systems: Seamless integration with Stripe, Apple Pay, etc.",
+          "7. App Store Deployment: Full submission, review process, and launch"
         ]
       }
     },

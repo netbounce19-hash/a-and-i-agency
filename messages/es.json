@@ -80,13 +80,13 @@
         "title": "CICLO DE VIDA DE APP DEV",
         "bgText": ["APP", "DEV"],
         "steps": [
-          "1. Concepto y Solución",
-          "2. Desarrollo de MVP",
-          "3. Diseño",
-          "4. Frontend y Backend",
-          "5. Seguridad",
-          "6. Sistemas de Pago",
-          "7. Publicación en App Store"
+          "1. Concepto y Solución: Análisis de mercado, prototipado y arquitectura",
+          "2. Desarrollo de MVP: Funcionalidad central para un lanzamiento rápido",
+          "3. Diseño UI/UX: Interfaces intuitivas adaptadas a tu audiencia",
+          "4. Frontend y Backend: Código robusto y desarrollo de API segura",
+          "5. Seguridad: Protección de datos, cifrado y cumplimiento",
+          "6. Sistemas de Pago: Integración perfecta con Stripe, Apple Pay, etc.",
+          "7. Publicación en App Store: Proceso de revisión y lanzamiento final"
         ]
       }
     },
