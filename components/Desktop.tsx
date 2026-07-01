@@ -121,30 +121,15 @@ export default function Desktop() {
           {t.desktop.subtitle}
         </div>
 
-        <motion.div
-          className="mt-6"
-          animate={{ opacity: [0.4, 1, 0.4] }}
-          transition={{ duration: 2.5, repeat: Infinity }}
-        >
-          <span
-            className="text-[12px] tracking-[0.3em] uppercase font-bold"
-            style={{ fontFamily: "var(--font-mono)", color: "var(--accent-primary)" }}
-          >
-            ▸ CLICK ICON TO OPEN MODULE
-          </span>
-        </motion.div>
+        {/* ── Desktop icons ── */}
+        <div className="mt-8 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 pointer-events-auto w-full max-w-4xl px-4">
+          <DesktopIcon windowId="portfolio" label={t.icons.portfolio} index={0} />
+          <DesktopIcon windowId="services"  label={t.icons.services}  index={1} />
+          <DesktopIcon windowId="contact"   label={t.icons.contact}   index={2} />
+        </div>
       </motion.div>
 
-      {/* ── Desktop icons ── */}
-      <div
-        className="absolute z-10 left-4 top-4 flex flex-col gap-4 md:gap-6 md:pb-14
-          max-md:flex-row max-md:gap-3 max-md:top-auto max-md:bottom-14
-          max-md:left-1/2 max-md:-translate-x-1/2"
-      >
-        <DesktopIcon windowId="portfolio" label={t.icons.portfolio} index={0} />
-        <DesktopIcon windowId="services"  label={t.icons.services}  index={1} />
-        <DesktopIcon windowId="contact"   label={t.icons.contact}   index={2} />
-      </div>
+
 
       {/* ── Windows ── */}
       <Window id="portfolio" title={t.windows.portfolio.title} subtitle={t.windows.portfolio.subtitle} defaultPosition={{ x: 100, y: 30  }} defaultWidth={780}>
