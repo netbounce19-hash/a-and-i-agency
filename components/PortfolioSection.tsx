@@ -14,14 +14,15 @@ export default function PortfolioSection() {
   
   return (
     <motion.div 
-      className="absolute inset-0 z-50 flex flex-col pt-16 pb-24 px-4 md:px-12 lg:px-20 overflow-y-auto bg-[var(--bg-main)]/90 backdrop-blur-md"
+      className="absolute inset-0 z-50 overflow-y-auto bg-[var(--bg-main)]/90 backdrop-blur-md pt-20 pb-32"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 20 }}
       transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
     >
-      <div className="flex justify-between items-start mb-16 pointer-events-auto">
-        <div>
+      <div className="max-w-6xl mx-auto w-full px-8 md:px-16">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-20 pointer-events-auto">
+          <div>
           <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter" style={{ fontFamily: "var(--font-heading)", color: "var(--text-primary)" }}>
             {portfolio.title}
           </h2>
@@ -54,7 +55,7 @@ export default function PortfolioSection() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 + i * 0.1, duration: 0.5 }}
-            className="flex flex-col lg:flex-row gap-6 lg:gap-12 border-t-2 pt-6 relative group"
+            className="flex flex-col lg:flex-row gap-8 lg:gap-16 border-t-2 pt-10 relative group"
             style={{ borderColor: "var(--border-main)" }}
           >
             <div className="absolute top-6 right-0 text-7xl md:text-[10rem] font-black opacity-5 pointer-events-none leading-none select-none" style={{ fontFamily: "var(--font-heading)" }}>
@@ -110,7 +111,7 @@ export default function PortfolioSection() {
             </div>
             
             {project.image && (
-              <div className="w-full lg:w-1/3 max-w-xl aspect-[4/3] relative border-2 overflow-hidden bg-[var(--bg-surface-2)] z-10" style={{ borderColor: "var(--border-main)" }}>
+              <div className="w-full sm:w-2/3 md:w-1/2 lg:w-1/4 max-w-[320px] aspect-[4/3] relative border-2 overflow-hidden bg-[var(--bg-surface-2)] z-10 shrink-0 mx-auto lg:mx-0" style={{ borderColor: "var(--border-main)" }}>
                 <Image 
                   src={project.image} 
                   alt={project.name}
@@ -121,6 +122,7 @@ export default function PortfolioSection() {
             )}
           </motion.div>
         ))}
+        </div>
       </div>
     </motion.div>
   );
