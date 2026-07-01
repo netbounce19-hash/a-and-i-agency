@@ -14,14 +14,14 @@ export default function PortfolioSection() {
   
   return (
     <motion.div 
-      className="absolute inset-0 z-50 overflow-y-auto overflow-x-hidden bg-[var(--bg-main)] pt-32 md:pt-48 pb-32 flex flex-col items-center"
+      className="absolute inset-0 z-50 overflow-y-auto overflow-x-hidden bg-[var(--bg-main)] pt-48 md:pt-[25vh] pb-32 flex flex-col items-center"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 20 }}
       transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
     >
       <div className="w-11/12 md:w-10/12 lg:w-5/6 max-w-6xl">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-32 md:mb-48 pointer-events-auto w-full">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-48 md:mb-[20vh] pointer-events-auto w-full">
           <div>
           <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter" style={{ fontFamily: "var(--font-heading)", color: "var(--text-primary)" }}>
             {portfolio.title}
