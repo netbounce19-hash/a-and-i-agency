@@ -5,12 +5,12 @@ import { motion } from "framer-motion";
 import DesktopIcon from "@/components/DesktopIcon";
 import Window from "@/components/Window";
 
-import ServicesWindow from "@/components/windows/ServicesWindow";
 import ContactWindow from "@/components/windows/ContactWindow";
 import { useLang } from "@/context/LangContext";
 import { AnimatePresence } from "framer-motion";
 import { useWindowManager } from "@/context/WindowManagerContext";
 import PortfolioSection from "@/components/PortfolioSection";
+import ServicesSection from "@/components/ServicesSection";
 
 function BauhausGrid() {
   return (
@@ -84,6 +84,7 @@ export default function Desktop() {
   const { t } = useLang();
   const { isOpen } = useWindowManager();
   const isPortfolioOpen = isOpen("portfolio");
+  const isServicesOpen = isOpen("services");
 
   return (
     <div
@@ -95,7 +96,7 @@ export default function Desktop() {
       <ConstructivistDecor />
 
       <AnimatePresence>
-        {!isPortfolioOpen && (
+        {(!isPortfolioOpen && !isServicesOpen) && (
           <motion.div
             key="agency-title"
             className="absolute inset-0 flex flex-col items-center justify-center gap-3 pointer-events-none"
@@ -139,13 +140,11 @@ export default function Desktop() {
 
       <AnimatePresence>
         {isPortfolioOpen && <PortfolioSection key="portfolio-section" />}
+        {isServicesOpen && <ServicesSection key="services-section" />}
       </AnimatePresence>
 
       {/* ── Windows ── */}
 
-      <Window id="services"  title={t.windows.services.title}  subtitle={t.windows.services.subtitle}  defaultPosition={{ x: 160, y: 60  }} defaultWidth={820}>
-        <ServicesWindow />
-      </Window>
       <Window id="contact"   title={t.windows.contact.title}   subtitle={t.windows.contact.subtitle}   defaultPosition={{ x: 200, y: 50  }} defaultWidth={560}>
         <ContactWindow />
       </Window>

@@ -59,21 +59,21 @@
       "columns": [
         {
           "id": "01",
-          "title": "NEXT.JS CORE",
+          "title": "WEB PLATFORMS",
           "tag": "WEB_ARCHITECTURE",
-          "desc": "High-performance, SEO-optimized web interfaces. Server-side rendering, static generation, and edge-ready deployment."
+          "desc": "High-performance websites and online platforms. We build corporate sites, B2B portals, and complex web apps with Next.js architecture and edge-ready deployment."
         },
         {
           "id": "02",
           "title": "APP DEV",
           "tag": "MOBILE_SYSTEMS",
-          "desc": "Native and cross-platform mobile solutions. React Native, PWA architecture, and offline-first design patterns."
+          "desc": "Native and cross-platform mobile solutions. From UX/UI design to full deployment pipeline directly to the App Store and Google Play."
         },
         {
           "id": "03",
           "title": "AI AUTOMATION",
           "tag": "INTELLIGENCE_LAYER",
-          "desc": "Business logic integration using n8n workflows, autonomous AI agents, and custom LLM integrations."
+          "desc": "Building custom AI automations and solutions for your business processes. We integrate autonomous agents, n8n workflows, and specialized LLMs."
         }
       ]
     },

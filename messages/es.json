@@ -59,21 +59,21 @@
       "columns": [
         {
           "id": "01",
-          "title": "NÚCLEO NEXT.JS",
+          "title": "PLATAFORMAS WEB",
           "tag": "ARQUITECTURA_WEB",
-          "desc": "Interfaces web de alto rendimiento y optimización SEO. Renderizado en servidor, generación estática y despliegue edge-ready."
+          "desc": "Sitios web y plataformas online de alto rendimiento. Desarrollamos sitios corporativos, portales B2B y aplicaciones web complejas con arquitectura Next.js."
         },
         {
           "id": "02",
-          "title": "DESARROLLO_APP",
+          "title": "DESARROLLO DE APPS",
           "tag": "SISTEMAS_MÓVILES",
-          "desc": "Soluciones móviles nativas y multiplataforma. React Native, arquitectura PWA y patrones offline-first."
+          "desc": "Soluciones móviles nativas y multiplataforma. Desde el diseño UX/UI hasta el despliegue y publicación directa en App Store y Google Play."
         },
         {
           "id": "03",
-          "title": "AUTOMATIZACIÓN_IA",
+          "title": "AUTOMATIZACIÓN IA",
           "tag": "CAPA_INTELIGENCIA",
-          "desc": "Integración de lógica de negocio usando flujos n8n, agentes de IA autónomos e integraciones LLM personalizadas."
+          "desc": "Construcción de automatizaciones y soluciones de IA personalizadas para tus procesos de negocio. Integramos agentes autónomos, flujos de n8n y LLMs."
         }
       ]
     },
