@@ -4,6 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import DesktopIcon from "@/components/DesktopIcon";
 import Window from "@/components/Window";
+import ShapeGrid from "@/components/ShapeGrid";
 
 import ContactWindow from "@/components/windows/ContactWindow";
 import { useLang } from "@/context/LangContext";
@@ -91,7 +92,15 @@ export default function Desktop() {
       className="relative w-full h-full overflow-hidden"
       style={{ background: "var(--bg-main)", transition: "background 0.25s ease" }}
     >
-      <BauhausGrid />
+      <ShapeGrid 
+        speed={0.5}
+        squareSize={40}
+        direction="diagonal"
+        borderColor="var(--grid-color-fine)"
+        hoverFillColor="var(--accent-primary)"
+        shape="square"
+        hoverTrailAmount={0}
+      />
       <div className="crt-overlay absolute inset-0 pointer-events-none" style={{ zIndex: 1 }} aria-hidden />
       <ConstructivistDecor />
 
