@@ -4,9 +4,9 @@
     "services": "SERVICES",
     "contact": "CONTACT",
     "start": "SYSTEM_START",
-    "capabilities": "CAPABILITIES",
-    "deployed_assets": "DEPLOYED ASSETS",
-    "initialize_system": "INITIALIZE SYSTEM"
+    "capabilities": "SERVICES",
+    "deployed_assets": "PROJECTS",
+    "initialize_system": "CONTACT"
   },
   "desktop": {
     "tagline": "CONSTRUCTIVIST_OS v2.0.26",
@@ -117,7 +117,7 @@
   },
   "sections": {
     "capabilities": {
-      "title": "CAPABILITIES",
+      "title": "SERVICES",
       "col1": {
         "title": "01 // WEB ENGINEERING",
         "content": "Custom web applications, SaaS architectures, high-performance interfaces, and scalable frontend/backend systems."
@@ -128,20 +128,20 @@
       }
     },
     "deployed_assets": {
-      "title": "DEPLOYED ASSETS",
+      "title": "SELECTED PROJECTS",
       "case1": {
-        "title": "ASSET_01 // LOGISTICS FINANCE ARCHITECTURE",
+        "title": "01 // LOGISTICS FINANCE ARCHITECTURE",
         "desc": "Complex mobile/web application development, precise financial data control, and advanced UI/UX layout."
       },
       "case2": {
-        "title": "ASSET_02 // B2B INTELLECTUAL COMMERCE PIPELINE",
+        "title": "02 // B2B INTELLECTUAL COMMERCE PIPELINE",
         "desc": "Deploying an asynchronous LLM sales agent integrated with inventory databases, processing real-time e-commerce operations."
       }
     },
     "initialize": {
-      "title": "INITIALIZE // REQUEST SYSTEM AUDIT",
+      "title": "REQUEST SYSTEM AUDIT",
       "desc": "Book a direct discovery call to analyze your operational bottlenecks and map out your digital infrastructure.",
-      "button": "SCHEDULE AUDIT",
+      "button": "BOOK A CALL",
       "success": "// TRANSMISSION_SUCCESSFUL. STANDBY FOR RESPONSE."
     }
   }

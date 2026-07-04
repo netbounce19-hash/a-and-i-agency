@@ -4,9 +4,9 @@
     "services": "SERVICIOS",
     "contact": "CONTACTO",
     "start": "INICIO_SISTEMA",
-    "capabilities": "CAPACIDADES",
-    "deployed_assets": "ACTIVOS DESPLEGADOS",
-    "initialize_system": "INICIALIZAR SISTEMA"
+    "capabilities": "SERVICIOS",
+    "deployed_assets": "PROYECTOS",
+    "initialize_system": "CONTACTO"
   },
   "desktop": {
     "tagline": "CONSTRUCTIVISTA_OS v2.0.26",
@@ -117,7 +117,7 @@
   },
   "sections": {
     "capabilities": {
-      "title": "CAPACIDADES",
+      "title": "SERVICIOS",
       "col1": {
         "title": "01 // INGENIERÍA WEB",
         "content": "Aplicaciones web personalizadas, arquitecturas SaaS, interfaces de alto rendimiento y sistemas frontend/backend escalables."
@@ -128,20 +128,20 @@
       }
     },
     "deployed_assets": {
-      "title": "ACTIVOS DESPLEGADOS",
+      "title": "PROYECTOS SELECCIONADOS",
       "case1": {
-        "title": "ACTIVO_01 // ARQUITECTURA FINANCIERA LOGÍSTICA",
+        "title": "01 // ARQUITECTURA FINANCIERA LOGÍSTICA",
         "desc": "enfocado en el desarrollo de aplicaciones móviles/web complejas, control preciso de datos financieros y diseño avanzado de UI/UX."
       },
       "case2": {
-        "title": "ACTIVO_02 // CANAL DE COMERCIO INTELECTUAL B2B",
+        "title": "02 // CANAL DE COMERCIO INTELECTUAL B2B",
         "desc": "enfocado en el despliegue de un agente de ventas LLM asíncrono integrado con bases de datos de inventario, procesando operaciones de comercio electrónico en tiempo real."
       }
     },
     "initialize": {
-      "title": "INICIALIZAR // SOLICITAR AUDITORÍA DEL SISTEMA",
+      "title": "SOLICITAR AUDITORÍA",
       "desc": "Reserva una llamada de descubrimiento directa para analizar tus cuellos de botella operativos y diseñar tu infraestructura digital.",
-      "button": "PROGRAMAR AUDITORÍA",
+      "button": "RESERVAR LLAMADA",
       "success": "// TRANSMISIÓN_EXITOSA. EN ESPERA DE RESPUESTA."
     }
   }

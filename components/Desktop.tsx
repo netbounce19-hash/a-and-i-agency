@@ -109,12 +109,12 @@ export default function Desktop() {
       </header>
 
       {/* Scrollable Layout Content */}
-      <div className="relative z-10 w-full min-h-full flex flex-col items-center pt-16 pb-24">
+      <div className="relative z-10 w-full min-h-full flex flex-col items-center pt-16 pb-32">
         
         {/* ── 2. HERO SECTION ── */}
-        <section className="min-h-[75vh] flex flex-col items-center justify-center px-4 py-16 w-full max-w-4xl border-b-2 border-dashed border-[var(--border-subtle)] relative z-20">
+        <section className="min-h-[80vh] flex flex-col items-center justify-center px-6 py-20 w-full max-w-4xl border-b-2 border-dashed border-[var(--border-subtle)] relative z-20">
           <motion.div 
-            className="relative mb-4"
+            className="relative mb-6"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -143,8 +143,9 @@ export default function Desktop() {
             {t.desktop.subtitle}
           </motion.div>
 
+          {/* More readable, lower description with proportional margins & padding */}
           <motion.p
-            className="mt-8 text-sm md:text-base max-w-2xl text-center font-mono font-medium tracking-wide leading-relaxed"
+            className="mt-16 text-base md:text-lg lg:text-xl max-w-3xl text-center font-mono font-medium tracking-wide leading-relaxed"
             style={{ color: "var(--text-secondary)" }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -154,7 +155,7 @@ export default function Desktop() {
           </motion.p>
 
           <motion.div 
-            className="mt-16 text-lg text-[var(--accent-primary)] font-mono font-bold"
+            className="mt-20 text-lg text-[var(--accent-primary)] font-mono font-bold"
             animate={{ y: [0, 6, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           >
@@ -162,169 +163,120 @@ export default function Desktop() {
           </motion.div>
         </section>
 
-        {/* ── 3. CAPABILITIES SECTION ── */}
+        {/* ── 3. SERVICES SECTION ── */}
         <section 
           id="capabilities" 
-          className="w-full max-w-5xl px-6 md:px-12 py-24 border-b-2 border-dashed border-[var(--border-subtle)]"
+          className="w-full max-w-5xl px-6 md:px-12 py-28 border-b-2 border-dashed border-[var(--border-subtle)]"
         >
-          <div className="mb-12">
-            <span className="text-xs font-mono tracking-[0.3em] font-bold text-[var(--accent-primary)] uppercase">
-              [SERVICES_KERNEL // STACK_v3]
-            </span>
+          <div className="mb-16">
             <h2 
-              className="text-3xl md:text-5xl font-black uppercase tracking-tighter mt-2"
+              className="text-4xl md:text-6xl font-black uppercase tracking-tighter"
               style={{ fontFamily: "var(--font-heading)", color: "var(--text-primary)" }}
             >
               {t.sections.capabilities.title}
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
             {/* Column 01 */}
             <div className="relative group">
-              <div className="absolute inset-0 translate-x-3 translate-y-3 bg-[var(--accent-primary)] transition-transform duration-300 group-hover:translate-x-4 group-hover:translate-y-4" />
-              <div className="absolute inset-0 translate-x-1 translate-y-1 bg-[var(--text-primary)]" />
+              <div className="absolute inset-0 translate-x-4 translate-y-4 bg-[var(--accent-primary)] transition-transform duration-300 group-hover:translate-x-6 group-hover:translate-y-6" />
+              <div className="absolute inset-0 translate-x-1.5 translate-y-1.5 bg-[var(--text-primary)]" />
               
-              <div className="relative border-2 border-[var(--border-main)] bg-[var(--bg-surface)] p-8 flex flex-col h-full transition-transform duration-300 group-hover:-translate-x-1 group-hover:-translate-y-1">
-                <div className="absolute top-0 left-0 right-0 h-2 bg-[var(--accent-primary)]" />
+              <div className="relative border-4 border-[var(--border-main)] bg-[var(--bg-surface)] pt-20 pb-12 px-10 md:pt-24 md:pb-16 md:px-14 min-h-[380px] md:min-h-[440px] flex flex-col justify-between transition-transform duration-300 group-hover:-translate-x-1 group-hover:-translate-y-1">
+                <div className="absolute top-0 left-0 right-0 h-3 bg-[var(--accent-primary)]" />
                 <h3 
-                  className="text-xl md:text-2xl font-black uppercase tracking-tight mt-4 mb-4"
+                  className="text-2xl md:text-3xl font-black uppercase tracking-tight mt-2 mb-6 leading-none"
                   style={{ fontFamily: "var(--font-heading)", color: "var(--text-primary)" }}
                 >
                   {t.sections.capabilities.col1.title}
                 </h3>
-                <p className="text-sm font-mono leading-relaxed text-[var(--text-secondary)]">
+                <p className="text-base font-mono leading-relaxed text-[var(--text-secondary)] flex-1">
                   {t.sections.capabilities.col1.content}
                 </p>
-                
-                <div className="mt-8 pt-4 border-t border-[var(--border-subtle)] flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[var(--accent-primary)] animate-pulse" />
-                  <span className="text-[10px] font-bold font-mono tracking-widest text-[var(--text-muted)] uppercase">
-                    STATUS_CORE_ACTIVE
-                  </span>
-                </div>
               </div>
             </div>
 
             {/* Column 02 */}
             <div className="relative group">
-              <div className="absolute inset-0 translate-x-3 translate-y-3 bg-[var(--accent-secondary)] transition-transform duration-300 group-hover:translate-x-4 group-hover:translate-y-4" />
-              <div className="absolute inset-0 translate-x-1 translate-y-1 bg-[var(--text-primary)]" />
+              <div className="absolute inset-0 translate-x-4 translate-y-4 bg-[var(--accent-secondary)] transition-transform duration-300 group-hover:translate-x-6 group-hover:translate-y-6" />
+              <div className="absolute inset-0 translate-x-1.5 translate-y-1.5 bg-[var(--text-primary)]" />
               
-              <div className="relative border-2 border-[var(--border-main)] bg-[var(--bg-surface)] p-8 flex flex-col h-full transition-transform duration-300 group-hover:-translate-x-1 group-hover:-translate-y-1">
-                <div className="absolute top-0 left-0 right-0 h-2 bg-[var(--accent-secondary)]" />
+              <div className="relative border-4 border-[var(--border-main)] bg-[var(--bg-surface)] pt-20 pb-12 px-10 md:pt-24 md:pb-16 md:px-14 min-h-[380px] md:min-h-[440px] flex flex-col justify-between transition-transform duration-300 group-hover:-translate-x-1 group-hover:-translate-y-1">
+                <div className="absolute top-0 left-0 right-0 h-3 bg-[var(--accent-secondary)]" />
                 <h3 
-                  className="text-xl md:text-2xl font-black uppercase tracking-tight mt-4 mb-4"
+                  className="text-2xl md:text-3xl font-black uppercase tracking-tight mt-2 mb-6 leading-none"
                   style={{ fontFamily: "var(--font-heading)", color: "var(--text-primary)" }}
                 >
                   {t.sections.capabilities.col2.title}
                 </h3>
-                <p className="text-sm font-mono leading-relaxed text-[var(--text-secondary)]">
+                <p className="text-base font-mono leading-relaxed text-[var(--text-secondary)] flex-1">
                   {t.sections.capabilities.col2.content}
                 </p>
-                
-                <div className="mt-8 pt-4 border-t border-[var(--border-subtle)] flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[var(--accent-secondary)] animate-pulse" />
-                  <span className="text-[10px] font-bold font-mono tracking-widest text-[var(--text-muted)] uppercase">
-                    STATUS_AGENT_ACTIVE
-                  </span>
-                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* ── 4. DEPLOYED ASSETS SECTION ── */}
+        {/* ── 4. PROJECTS SECTION ── */}
         <section 
           id="portfolio" 
-          className="w-full max-w-5xl px-6 md:px-12 py-24 border-b-2 border-dashed border-[var(--border-subtle)]"
+          className="w-full max-w-5xl px-6 md:px-12 py-28 border-b-2 border-dashed border-[var(--border-subtle)]"
         >
-          <div className="mb-12">
-            <span className="text-xs font-mono tracking-[0.3em] font-bold text-[var(--accent-primary)] uppercase">
-              [PROD_LOGS // DEPLOYED_SYSTEMS]
-            </span>
+          <div className="mb-16">
             <h2 
-              className="text-3xl md:text-5xl font-black uppercase tracking-tighter mt-2"
+              className="text-4xl md:text-6xl font-black uppercase tracking-tighter"
               style={{ fontFamily: "var(--font-heading)", color: "var(--text-primary)" }}
             >
               {t.sections.deployed_assets.title}
             </h2>
           </div>
 
-          <div className="flex flex-col gap-12">
+          <div className="flex flex-col gap-16">
             {/* Case 01 */}
             <div 
-              className="border-t-4 border-[var(--border-main)] pt-8 flex flex-col md:flex-row justify-between items-start gap-6 relative group"
+              className="border-t-4 border-[var(--border-main)] pt-12 pb-6 flex flex-col md:flex-row justify-between items-start gap-8 relative group"
             >
-              <div className="absolute top-2 right-2 text-8xl md:text-9xl font-black opacity-[0.03] select-none font-mono pointer-events-none">
-                A_01
-              </div>
-
-              <div className="flex-1 max-w-2xl">
-                <span className="text-[10px] font-mono tracking-[0.2em] text-[var(--accent-primary)] font-bold">
-                  [SYS_FINANCE // LOGISTICS]
-                </span>
+              <div className="flex-1 max-w-3xl">
                 <h3 
-                  className="text-xl md:text-2xl font-black uppercase tracking-tight mt-1 mb-4"
+                  className="text-2xl md:text-3xl font-black uppercase tracking-tight mb-4 leading-none"
                   style={{ fontFamily: "var(--font-heading)", color: "var(--text-primary)" }}
                 >
                   {t.sections.deployed_assets.case1.title}
                 </h3>
-                <p className="text-sm md:text-base font-mono leading-relaxed text-[var(--text-secondary)]">
+                <p className="text-base md:text-lg font-mono leading-relaxed text-[var(--text-secondary)]">
                   {t.sections.deployed_assets.case1.desc}
                 </p>
-              </div>
-              
-              <div className="mt-4 md:mt-0 md:self-end">
-                <span className="px-4 py-2 border-2 border-[var(--border-main)] text-xs font-bold font-mono tracking-widest text-[var(--text-primary)] hover:bg-[var(--text-primary)] hover:text-[var(--bg-main)] transition-colors duration-200 cursor-default select-none">
-                  ASSET_STATUS // OK
-                </span>
               </div>
             </div>
 
             {/* Case 02 */}
             <div 
-              className="border-t-4 border-[var(--border-main)] pt-8 flex flex-col md:flex-row justify-between items-start gap-6 relative group"
+              className="border-t-4 border-[var(--border-main)] pt-12 pb-6 flex flex-col md:flex-row justify-between items-start gap-8 relative group"
             >
-              <div className="absolute top-2 right-2 text-8xl md:text-9xl font-black opacity-[0.03] select-none font-mono pointer-events-none">
-                A_02
-              </div>
-
-              <div className="flex-1 max-w-2xl">
-                <span className="text-[10px] font-mono tracking-[0.2em] text-[var(--accent-secondary)] font-bold">
-                  [SYS_ECOM // INTELLIGENCE]
-                </span>
+              <div className="flex-1 max-w-3xl">
                 <h3 
-                  className="text-xl md:text-2xl font-black uppercase tracking-tight mt-1 mb-4"
+                  className="text-2xl md:text-3xl font-black uppercase tracking-tight mb-4 leading-none"
                   style={{ fontFamily: "var(--font-heading)", color: "var(--text-primary)" }}
                 >
                   {t.sections.deployed_assets.case2.title}
                 </h3>
-                <p className="text-sm md:text-base font-mono leading-relaxed text-[var(--text-secondary)]">
+                <p className="text-base md:text-lg font-mono leading-relaxed text-[var(--text-secondary)]">
                   {t.sections.deployed_assets.case2.desc}
                 </p>
-              </div>
-              
-              <div className="mt-4 md:mt-0 md:self-end">
-                <span className="px-4 py-2 border-2 border-[var(--border-main)] text-xs font-bold font-mono tracking-widest text-[var(--text-primary)] hover:bg-[var(--text-primary)] hover:text-[var(--bg-main)] transition-colors duration-200 cursor-default select-none">
-                  ASSET_STATUS // OK
-                </span>
               </div>
             </div>
           </div>
         </section>
 
-        {/* ── 5. SYSTEM INITIALIZATION ── */}
+        {/* ── 5. CONTACT AUDIT SECTION ── */}
         <section 
           id="initialize" 
-          className="w-full max-w-5xl px-6 md:px-12 py-24 pb-36"
+          className="w-full max-w-4xl px-6 md:px-12 py-28 pb-40"
         >
-          <div className="mb-12">
-            <span className="text-xs font-mono tracking-[0.3em] font-bold text-[var(--accent-primary)] uppercase">
-              [AUDIT_INIT // ROOT_ACCESS]
-            </span>
+          <div className="mb-16 text-center">
             <h2 
-              className="text-3xl md:text-5xl font-black uppercase tracking-tighter mt-2"
+              className="text-4xl md:text-6xl font-black uppercase tracking-tighter"
               style={{ fontFamily: "var(--font-heading)", color: "var(--text-primary)" }}
             >
               {t.sections.initialize.title}
@@ -332,71 +284,43 @@ export default function Desktop() {
           </div>
 
           <div 
-            className="w-full border-4 border-[var(--border-main)] overflow-hidden bg-[var(--terminal-bg)] text-[var(--terminal-green)] p-6 md:p-10 relative z-20 flex flex-col gap-6"
+            className="w-full border-4 border-[var(--border-main)] overflow-hidden bg-[var(--bg-surface)] p-8 md:p-16 relative z-20 flex flex-col gap-8"
             style={{ boxShadow: "var(--window-shadow)", borderColor: "var(--border-main)" }}
           >
-            {/* Terminal header */}
-            <div 
-              className="absolute top-0 left-0 right-0 h-8 border-b-2 flex items-center px-4 justify-between select-none"
-              style={{
-                borderColor: "var(--border-main)",
-                background: "var(--titlebar-bg)",
-              }}
-            >
-              <span className="text-[10px] font-mono tracking-widest text-[var(--text-primary)] font-bold">
-                SYS_AUDIT_INITIALIZATION_MODULE // PORT_8080
-              </span>
-              <div className="flex gap-1.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-[var(--accent-primary)] border" style={{ borderColor: "var(--border-main)" }} />
-                <span className="w-2.5 h-2.5 rounded-full bg-[var(--text-primary)] border" style={{ borderColor: "var(--border-main)" }} />
-              </div>
-            </div>
-
-            <div className="mt-6 font-mono text-sm leading-relaxed space-y-4">
-              <p style={{ color: "var(--accent-primary)", opacity: 0.5 }}>
-                &gt; SYSTEM STATUS: READY // READY TO CONFIGURE AUDIT...
-              </p>
-              <p className="text-base md:text-lg" style={{ color: "var(--text-primary)" }}>
+            <div className="font-mono text-base md:text-lg leading-relaxed text-center max-w-2xl mx-auto">
+              <p style={{ color: "var(--text-primary)" }}>
                 {t.sections.initialize.desc}
               </p>
             </div>
 
-            {/* Interactive Scheduling Container */}
+            {/* Spacious booking widget area */}
             <div 
-              className="mt-8 border-2 border-dashed p-8 flex flex-col items-center justify-center text-center gap-6"
+              className="mt-4 border-2 border-dashed p-10 md:p-14 flex flex-col items-center justify-center text-center gap-8"
               style={{
                 borderColor: "var(--border-main)",
                 background: "var(--bg-surface-3)",
               }}
             >
-              <span className="text-xs font-mono tracking-widest text-[var(--text-secondary)]">
-                [ SCHEDULING INTERFACE PLACEHOLDER ]
-              </span>
-              
               <a
                 href="mailto:contact@a-and-i.agency?subject=Request%20System%20Audit"
-                className="px-8 py-4 border-2 text-sm font-bold font-mono tracking-[0.2em] transition-all duration-300 select-none cursor-pointer"
+                className="px-10 py-5 border-4 text-base font-bold font-mono tracking-[0.2em] transition-all duration-300 select-none cursor-pointer"
                 style={{
                   borderColor: "var(--border-main)",
                   background: "var(--accent-primary)",
                   color: "var(--bg-main)",
-                  boxShadow: "4px 4px 0px var(--border-main)",
+                  boxShadow: "6px 6px 0px var(--border-main)",
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.boxShadow = "0px 0px 0px transparent";
-                  e.currentTarget.style.transform = "translate(4px, 4px)";
+                  e.currentTarget.style.transform = "translate(6px, 6px)";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.boxShadow = "4px 4px 0px var(--border-main)";
+                  e.currentTarget.style.boxShadow = "6px 6px 0px var(--border-main)";
                   e.currentTarget.style.transform = "translate(0px, 0px)";
                 }}
               >
                 {t.sections.initialize.button} ↗
               </a>
-              
-              <span className="text-[10px] font-mono tracking-wider text-[var(--text-muted)]">
-                * Connecting to secure booking node. Session fully encrypted.
-              </span>
             </div>
           </div>
         </section>
