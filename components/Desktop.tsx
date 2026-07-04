@@ -136,8 +136,8 @@ export default function Desktop() {
             exit={{ opacity: 0, transition: { duration: 0.3 } }}
             transition={{ delay: 0.2, duration: 0.4 }}
           >
-            {/* Logo with substantial bottom spacing */}
-            <div className="relative mb-12">
+            {/* Logo */}
+            <div className="relative">
               <h1
                 className="text-7xl md:text-9xl font-black uppercase tracking-tighter leading-none text-center"
                 style={{
@@ -152,17 +152,23 @@ export default function Desktop() {
               <div className="absolute -bottom-1 left-0 right-0 h-[4px]" style={{ background: "var(--accent-primary)" }} />
             </div>
 
-            {/* Subtitle placed lower and spaced from logo */}
+            {/* Guaranteed Spacer: Logo to Subtitle */}
+            <div style={{ height: "48px" }} aria-hidden />
+
+            {/* Subtitle */}
             <div
-              className="text-xs md:text-sm tracking-[0.4em] uppercase text-center px-4 font-bold mt-12 md:mt-16"
+              className="text-xs md:text-sm tracking-[0.4em] uppercase text-center px-4 font-bold"
               style={{ fontFamily: "var(--font-mono)", color: "var(--text-muted)", transition: "color 0.25s" }}
             >
               {t.desktop.subtitle}
             </div>
 
-            {/* Description paragraph placed significantly lower for proportion */}
+            {/* Guaranteed Spacer: Subtitle to Description */}
+            <div style={{ height: "64px" }} aria-hidden />
+
+            {/* Description paragraph */}
             <p
-              className="mt-20 md:mt-28 text-base md:text-lg max-w-2xl text-center font-mono font-medium tracking-wide leading-relaxed pointer-events-auto px-6"
+              className="text-base md:text-lg max-w-2xl text-center font-mono font-medium tracking-wide leading-relaxed pointer-events-auto px-6"
               style={{ color: "var(--text-secondary)" }}
             >
               {t.desktop.subheadline}
