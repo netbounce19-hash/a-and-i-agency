@@ -163,8 +163,8 @@ export default function Desktop() {
               {t.desktop.subtitle}
             </div>
 
-            {/* Guaranteed Spacer: Subtitle to Description */}
-            <div style={{ height: "64px" }} aria-hidden />
+            {/* Guaranteed Spacer: Subtitle to Description (reduced to group them) */}
+            <div style={{ height: "16px" }} aria-hidden />
 
             {/* Description paragraph */}
             <p
