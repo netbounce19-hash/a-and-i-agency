@@ -3,7 +3,6 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ShapeGrid from "@/components/ShapeGrid";
-import DesktopIcon from "@/components/DesktopIcon";
 import Window from "@/components/Window";
 import ContactWindow from "@/components/windows/ContactWindow";
 import PortfolioSection from "@/components/PortfolioSection";
@@ -137,8 +136,8 @@ export default function Desktop() {
             exit={{ opacity: 0, transition: { duration: 0.3 } }}
             transition={{ delay: 0.2, duration: 0.4 }}
           >
-            {/* Logo */}
-            <div className="relative mb-6">
+            {/* Logo with substantial bottom spacing */}
+            <div className="relative mb-12">
               <h1
                 className="text-7xl md:text-9xl font-black uppercase tracking-tighter leading-none text-center"
                 style={{
@@ -153,28 +152,21 @@ export default function Desktop() {
               <div className="absolute -bottom-1 left-0 right-0 h-[4px]" style={{ background: "var(--accent-primary)" }} />
             </div>
 
-            {/* Subtitle placed lower */}
+            {/* Subtitle placed lower and spaced from logo */}
             <div
-              className="text-xs md:text-sm tracking-[0.4em] uppercase text-center px-4 font-bold mt-6"
+              className="text-xs md:text-sm tracking-[0.4em] uppercase text-center px-4 font-bold mt-12 md:mt-16"
               style={{ fontFamily: "var(--font-mono)", color: "var(--text-muted)", transition: "color 0.25s" }}
             >
               {t.desktop.subtitle}
             </div>
 
-            {/* Description paragraph placed lower */}
+            {/* Description paragraph placed significantly lower for proportion */}
             <p
-              className="mt-16 text-base md:text-lg max-w-2xl text-center font-mono font-medium tracking-wide leading-relaxed pointer-events-auto"
+              className="mt-20 md:mt-28 text-base md:text-lg max-w-2xl text-center font-mono font-medium tracking-wide leading-relaxed pointer-events-auto px-6"
               style={{ color: "var(--text-secondary)" }}
             >
               {t.desktop.subheadline}
             </p>
-
-            {/* Desktop Icons */}
-            <div className="mt-20 flex flex-col md:flex-row flex-wrap items-center justify-center gap-6 md:gap-8 pointer-events-auto w-full max-w-4xl px-4">
-              <DesktopIcon windowId="services"  label={t.icons.services}  index={0} />
-              <DesktopIcon windowId="portfolio" label={t.icons.portfolio} index={1} />
-              <DesktopIcon windowId="contact"   label={t.icons.contact}   index={2} />
-            </div>
           </motion.div>
         )}
       </AnimatePresence>
