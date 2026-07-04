@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useLang, Lang } from "@/context/LangContext";
-import { useWindowManager, WindowId } from "@/context/WindowManagerContext";
 import { useTheme } from "@/context/ThemeContext";
 
 const LANGS: { code: Lang; label: string }[] = [
@@ -12,15 +11,8 @@ const LANGS: { code: Lang; label: string }[] = [
   { code: "es", label: "SPANISH" },
 ];
 
-const WINDOWS: { id: WindowId; labelKey: "portfolio" | "services" | "contact" }[] = [
-  { id: "portfolio", labelKey: "portfolio" },
-  { id: "services",  labelKey: "services" },
-  { id: "contact",   labelKey: "contact" },
-];
-
 export default function Taskbar() {
-  const { lang, setLang, t } = useLang();
-  const { openWindow, isOpen, focusWindow } = useWindowManager();
+  const { lang, setLang } = useLang();
   const { theme, toggleTheme } = useTheme();
   const [time, setTime] = useState("");
   const [date, setDate] = useState("");
@@ -52,32 +44,8 @@ export default function Taskbar() {
       {/* Left side spacer since start button is gone */}
       <div className="w-1" />
 
-      {/* ── Open window tabs ── */}
-      <div className="flex items-center gap-1 flex-1 overflow-hidden">
-        {WINDOWS.map((w) =>
-          isOpen(w.id) ? (
-            <motion.button
-              key={w.id}
-              initial={{ opacity: 0, x: -4 }}
-              animate={{ opacity: 1, x: 0 }}
-              onClick={() => focusWindow(w.id)}
-              className="h-7 px-3 text-[10px] tracking-widest uppercase cursor-pointer whitespace-nowrap"
-              style={{
-                fontFamily: "var(--font-mono)",
-                border: "2px solid var(--border-subtle)",
-                background: "var(--bg-surface-2)",
-                color: "var(--text-muted)",
-                transition: "border-color 0.07s, color 0.07s",
-              }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--border-main)"; (e.currentTarget as HTMLButtonElement).style.color = "var(--text-primary)"; }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--border-subtle)"; (e.currentTarget as HTMLButtonElement).style.color = "var(--text-muted)"; }}
-            >
-              <span style={{ color: "var(--accent-primary)", marginRight: 4 }}>■</span>
-              {t.nav[w.labelKey]}
-            </motion.button>
-          ) : null
-        )}
-      </div>
+      {/* Empty space filling the middle */}
+      <div className="flex-1" />
 
       {/* ── Theme toggle ── */}
       <button

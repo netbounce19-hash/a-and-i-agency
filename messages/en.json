@@ -3,11 +3,15 @@
     "portfolio": "PORTFOLIO",
     "services": "SERVICES",
     "contact": "CONTACT",
-    "start": "SYSTEM_START"
+    "start": "SYSTEM_START",
+    "capabilities": "CAPABILITIES",
+    "deployed_assets": "DEPLOYED ASSETS",
+    "initialize_system": "INITIALIZE SYSTEM"
   },
   "desktop": {
     "tagline": "CONSTRUCTIVIST_OS v2.0.26",
-    "subtitle": "A-AND-I AGENCY // DIGITAL ARCHITECTURE STUDIO"
+    "subtitle": "A-AND-I AGENCY // DIGITAL ARCHITECTURE STUDIO",
+    "subheadline": "We engineer scalable web platforms and autonomous AI infrastructure to eliminate operational drag and accelerate business growth."
   },
   "icons": {
     "portfolio": "OUR PROJECTS",
@@ -110,5 +114,35 @@
   "taskbar": {
     "time": "SYS_CLOCK",
     "lang": "LANG"
+  },
+  "sections": {
+    "capabilities": {
+      "title": "CAPABILITIES",
+      "col1": {
+        "title": "01 // WEB ENGINEERING",
+        "content": "Custom web applications, SaaS architectures, high-performance interfaces, and scalable frontend/backend systems."
+      },
+      "col2": {
+        "title": "02 // AUTONOMOUS SYSTEMS",
+        "content": "Context-aware LLM agents, cross-platform workflow orchestration via advanced API integrations, and automated generative media pipelines."
+      }
+    },
+    "deployed_assets": {
+      "title": "DEPLOYED ASSETS",
+      "case1": {
+        "title": "ASSET_01 // LOGISTICS FINANCE ARCHITECTURE",
+        "desc": "Complex mobile/web application development, precise financial data control, and advanced UI/UX layout."
+      },
+      "case2": {
+        "title": "ASSET_02 // B2B INTELLECTUAL COMMERCE PIPELINE",
+        "desc": "Deploying an asynchronous LLM sales agent integrated with inventory databases, processing real-time e-commerce operations."
+      }
+    },
+    "initialize": {
+      "title": "INITIALIZE // REQUEST SYSTEM AUDIT",
+      "desc": "Book a direct discovery call to analyze your operational bottlenecks and map out your digital infrastructure.",
+      "button": "SCHEDULE AUDIT",
+      "success": "// TRANSMISSION_SUCCESSFUL. STANDBY FOR RESPONSE."
+    }
   }
 }
