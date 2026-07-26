@@ -4,8 +4,8 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLang } from "@/context/LangContext";
 
-/* TODO: replace with the agency's real inbox — this address is a placeholder. */
-const FALLBACK_EMAIL = "hello@a-and-i.agency";
+/* Shown to the user only when delivery fails, so they always have a way through. */
+const FALLBACK_EMAIL = "netbounce19@gmail.com";
 
 type FieldName = "email" | "budget" | "task";
 type ErrorKey = "validation" | "rateLimit" | "network" | "delivery";
