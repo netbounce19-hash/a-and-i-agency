@@ -1,8 +1,26 @@
 "use client";
 
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import { motion, AnimatePresence, useDragControls } from "framer-motion";
 import { useWindowManager, WindowId } from "@/context/WindowManagerContext";
+
+/* Windows are dragged by absolute pixel coordinates, which only makes sense on
+   a desktop-sized viewport. Below `md` we pin them as an inset sheet instead —
+   otherwise a hardcoded x offset parks the window off-screen, and with
+   `overflow: hidden` on <body> there is no way to scroll it back into view. */
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
+  return isMobile;
+}
 
 interface WindowProps {
   id: WindowId;
@@ -23,6 +41,7 @@ export default function Window({
 }: WindowProps) {
   const { isOpen, closeWindow, focusWindow, getZ } = useWindowManager();
   const dragControls = useDragControls();
+  const isMobile = useIsMobile();
 
   const open = isOpen(id);
   const z = getZ(id);
@@ -40,7 +59,7 @@ export default function Window({
 
           <motion.div
             key={id}
-            drag
+            drag={!isMobile}
             dragControls={dragControls}
             dragMomentum={false}
             dragElastic={0}
@@ -58,11 +77,12 @@ export default function Window({
               border: "2px solid var(--border-main)",
               boxShadow: "var(--window-shadow)",
               borderRadius: 0,
-              top: defaultPosition.y,
-              left: defaultPosition.x,
-              width: defaultWidth,
+              top: isMobile ? 76 : defaultPosition.y,
+              left: isMobile ? 12 : defaultPosition.x,
+              right: isMobile ? 12 : undefined,
+              width: isMobile ? "auto" : defaultWidth,
               maxWidth: "calc(100vw - 24px)",
-              maxHeight: "calc(100vh - 80px)",
+              maxHeight: isMobile ? "calc(100dvh - 136px)" : "calc(100vh - 80px)",
               transition: "background 0.25s ease, border-color 0.25s ease",
             }}
           >
@@ -92,7 +112,7 @@ export default function Window({
                 </span>
                 {subtitle && (
                   <span
-                    className="text-[10px] tracking-[0.18em] uppercase leading-none"
+                    className="text-[10px] tracking-[0.18em] uppercase leading-tight"
                     style={{
                       fontFamily: "var(--font-mono)",
                       color: "var(--text-dim)",

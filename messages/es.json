@@ -1,33 +1,25 @@
 {
   "nav": {
-    "portfolio": "PORTAFOLIO",
     "services": "SERVICIOS",
-    "contact": "CONTACTO",
-    "start": "INICIO_SISTEMA",
-    "capabilities": "SERVICIOS",
-    "deployed_assets": "PROYECTOS",
-    "initialize_system": "CONTACTO"
+    "projects": "PROYECTOS",
+    "contact": "CONTACTO"
   },
   "desktop": {
-    "tagline": "CONSTRUCTIVISTA_OS v2.0.26",
-    "subtitle": "A-AND-I AGENCY // ESTUDIO DE ARQUITECTURA DIGITAL",
-    "subheadline": "Diseñamos plataformas web escalables e infraestructura de IA autónoma para eliminar la fricción operativa y acelerar el crecimiento del negocio."
+    "subtitle": "WEB · MÓVIL · AUTOMATIZACIÓN IA",
+    "subheadline": "Creamos plataformas web escalables y automatización con IA que eliminan el trabajo manual y hacen crecer tu negocio."
   },
-  "icons": {
-    "portfolio": "NUESTROS PROYECTOS",
-    "services": "NUESTROS SERVICIOS",
-    "contact": "HACER SOLICITUD",
-    "folder": "CARPETA"
+  "common": {
+    "close": "CERRAR"
   },
   "windows": {
     "portfolio": {
-      "title": "//DIRECTORIOS_PORTAFOLIO",
-      "subtitle": "TRABAJOS_SELECCIONADOS",
+      "title": "PROYECTOS",
+      "subtitle": "TRABAJOS SELECCIONADOS",
       "projects": [
         {
           "id": "01",
           "name": "Truckers Budget",
-          "tag": "FINANZAS // APP iOS",
+          "tag": "FINANZAS · iOS",
           "desc": "El rastreador todo en uno de gastos, ingresos y kilometraje para camioneros. Seguimiento de viáticos estándar del IRS, cargas, gastos y registros IFTA. Incluye un escáner de recibos por IA con automatización y marketing online con la creación de un influencer de IA.",
           "image": "/images/truckersbudget.webp",
           "links": [
@@ -38,7 +30,7 @@
         {
           "id": "02",
           "name": "Policarbonat-Center",
-          "tag": "TIENDA_B2B // NEXT.JS",
+          "tag": "TIENDA B2B · NEXT.JS",
           "desc": "Tienda digital B2B de alto rendimiento construida en Next.js. Cuenta con un sistema de cálculo inteligente y calculadora de ingeniería dinámica para estimaciones precisas de materiales.",
           "image": "/images/poly_logo.png",
           "links": [
@@ -48,7 +40,7 @@
         {
           "id": "03",
           "name": "The Gun Store",
-          "tag": "E-COMMERCE // BIZZLEY APP",
+          "tag": "E-COMMERCE · CRM",
           "desc": "El diseño refleja el código cultural de la ubicación legendaria de Las Vegas. Integración completa con el CRM Bizzley App, configuración de sistema de pago y embudos de ventas.",
           "image": "/images/gunstore_logo.png",
           "links": [
@@ -58,91 +50,64 @@
       ]
     },
     "services": {
-      "title": "//NÚCLEO_AGENCIA",
-      "subtitle": "SERVICIOS_CORE // STACK_v3",
+      "title": "SERVICIOS",
+      "subtitle": "QUÉ HACEMOS",
       "columns": [
         {
           "id": "01",
           "title": "PLATAFORMAS WEB",
-          "tag": "ARQUITECTURA_WEB",
           "desc": "Sitios web y plataformas online de alto rendimiento. Desarrollamos sitios corporativos, portales B2B y aplicaciones web complejas con arquitectura Next.js."
         },
         {
           "id": "02",
-          "title": "DESARROLLO DE APPS",
-          "tag": "SISTEMAS_MÓVILES",
+          "title": "APPS MÓVILES",
           "desc": "Soluciones móviles nativas y multiplataforma. Desde el diseño UX/UI hasta el despliegue y publicación directa en App Store y Google Play."
         },
         {
           "id": "03",
           "title": "AUTOMATIZACIÓN IA",
-          "tag": "CAPA_INTELIGENCIA",
           "desc": "Construcción de automatizaciones y soluciones de IA personalizadas para tus procesos de negocio. Integramos agentes autónomos, flujos de n8n y LLMs."
         }
       ],
       "appDevHover": {
-        "title": "CICLO DE VIDA DE APP DEV",
-        "bgText": ["APP", "DEV"],
+        "toggle": "CÓMO TRABAJAMOS",
+        "title": "CÓMO CREAMOS APPS",
         "steps": [
-          "1. Concepto y Solución: Análisis de mercado, prototipado y arquitectura",
-          "2. Desarrollo de MVP: Funcionalidad central para un lanzamiento rápido",
-          "3. Diseño UI/UX: Interfaces intuitivas adaptadas a tu audiencia",
-          "4. Frontend y Backend: Código robusto y desarrollo de API segura",
-          "5. Seguridad: Protección de datos, cifrado y cumplimiento",
-          "6. Sistemas de Pago: Integración perfecta con Stripe, Apple Pay, etc.",
-          "7. Publicación en App Store: Proceso de revisión y lanzamiento final"
+          "Concepto: análisis de mercado, prototipado y arquitectura",
+          "MVP: funcionalidad central para un lanzamiento rápido",
+          "Diseño UI/UX: interfaces intuitivas adaptadas a tu audiencia",
+          "Frontend y backend: código robusto y APIs seguras",
+          "Seguridad: protección de datos, cifrado y cumplimiento",
+          "Pagos: integración con Stripe, Apple Pay y más",
+          "Lanzamiento: envío a App Store, revisión y publicación"
         ]
       }
     },
     "contact": {
-      "title": "//TERMINAL_CONTACTO",
-      "subtitle": "ESTABLECER_CONEXIÓN // ENTRADA_REQUERIDA",
+      "title": "EMPEZAR UN PROYECTO",
+      "subtitle": "Respondemos en un día hábil",
       "fields": {
-        "email": "INGRESAR_EMAIL",
-        "budget": "INGRESAR_PRESUPUESTO",
-        "task": "DEFINIR_TAREA"
+        "email": "TU EMAIL",
+        "budget": "PRESUPUESTO",
+        "task": "SOBRE EL PROYECTO"
       },
-      "submit": "EJECUTAR",
-      "success": "// TRANSMISIÓN_EXITOSA. EN ESPERA DE RESPUESTA.",
       "placeholder": {
-        "email": "tu@email.com",
+        "email": "tu@empresa.com",
         "budget": "ej. $5,000 – $20,000",
-        "task": "Describe los requisitos de tu proyecto..."
-      }
-    }
-  },
-  "taskbar": {
-    "time": "RELOJ_SIS",
-    "lang": "IDIOMA"
-  },
-  "sections": {
-    "capabilities": {
-      "title": "SERVICIOS",
-      "col1": {
-        "title": "01 // INGENIERÍA WEB",
-        "content": "Aplicaciones web personalizadas, arquitecturas SaaS, interfaces de alto rendimiento y sistemas frontend/backend escalables."
+        "task": "¿Qué quieres construir y para cuándo?"
       },
-      "col2": {
-        "title": "02 // SISTEMAS AUTÓNOMOS",
-        "content": "Agentes LLM sensibles al contexto, orquestación de flujos de trabajo multiplataforma mediante integraciones de API avanzadas y canales automatizados de medios generativos."
+      "submit": "ENVIAR SOLICITUD",
+      "sending": "ENVIANDO…",
+      "successTitle": "SOLICITUD ENVIADA",
+      "success": "Gracias — hemos recibido tu solicitud y responderemos en un día hábil.",
+      "reset": "ENVIAR OTRA",
+      "fallbackLabel": "O escríbenos directamente:",
+      "errors": {
+        "validation": "Por favor revisa los campos marcados.",
+        "rateLimit": "Demasiados intentos. Inténtalo de nuevo en un minuto.",
+        "network": "Conexión perdida. Revisa tu internet e inténtalo de nuevo.",
+        "delivery": "No pudimos enviar tu solicitud en este momento."
       }
-    },
-    "deployed_assets": {
-      "title": "PROYECTOS SELECCIONADOS",
-      "case1": {
-        "title": "01 // ARQUITECTURA FINANCIERA LOGÍSTICA",
-        "desc": "enfocado en el desarrollo de aplicaciones móviles/web complejas, control preciso de datos financieros y diseño avanzado de UI/UX."
-      },
-      "case2": {
-        "title": "02 // CANAL DE COMERCIO INTELECTUAL B2B",
-        "desc": "enfocado en el despliegue de un agente de ventas LLM asíncrono integrado con bases de datos de inventario, procesando operaciones de comercio electrónico en tiempo real."
-      }
-    },
-    "initialize": {
-      "title": "SOLICITAR AUDITORÍA",
-      "desc": "Reserva una llamada de descubrimiento directa para analizar tus cuellos de botella operativos y diseñar tu infraestructura digital.",
-      "button": "RESERVAR LLAMADA",
-      "success": "// TRANSMISIÓN_EXITOSA. EN ESPERA DE RESPUESTA."
     }
   }
 }

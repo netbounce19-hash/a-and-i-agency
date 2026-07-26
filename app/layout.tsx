@@ -1,8 +1,23 @@
 import type { Metadata } from "next";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { LangProvider } from "@/context/LangContext";
 import { WindowManagerProvider } from "@/context/WindowManagerContext";
 import { ThemeProvider } from "@/context/ThemeContext";
+
+/* Both are variable fonts — no `weight` needed, the full 100–900 range ships
+   in a single self-hosted file. */
+const inter = Inter({
+  subsets: ["latin", "latin-ext", "cyrillic"],
+  display: "swap",
+  variable: "--font-inter",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin", "latin-ext", "cyrillic"],
+  display: "swap",
+  variable: "--font-jetbrains",
+});
 
 export const metadata: Metadata = {
   title: "A-AND-I Agency — Digital Architecture Studio",
@@ -19,7 +34,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" data-theme="light">
+    <html
+      lang="en"
+      data-theme="light"
+      className={`${inter.variable} ${jetbrainsMono.variable}`}
+    >
       <body className="grain-overlay">
         <ThemeProvider>
           <LangProvider>

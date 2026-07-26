@@ -86,41 +86,41 @@ export default function Desktop() {
 
       {/* ── 1. HEADER & NAVIGATION ── */}
       <header 
-        className="fixed top-0 left-0 right-0 h-16 border-b-2 flex items-center justify-between px-6 md:px-12 z-50 transition-colors duration-250 select-none bg-[var(--bg-main)]"
+        className="fixed top-0 left-0 right-0 h-16 border-b-2 flex items-center justify-between gap-3 px-4 md:px-12 z-50 transition-colors duration-250 select-none bg-[var(--bg-main)]"
         style={{
           borderColor: "var(--border-main)",
         }}
       >
-        <div className="flex items-center gap-2">
-          <div className="w-3 h-3 bg-[var(--accent-primary)] animate-pulse" />
-          <span 
-            className="text-lg md:text-xl font-black uppercase tracking-tighter" 
+        <div className="flex items-center gap-2 shrink-0">
+          <div className="w-3 h-3 shrink-0 bg-[var(--accent-primary)] animate-pulse" />
+          <span
+            className="text-base md:text-xl font-black uppercase tracking-tighter whitespace-nowrap"
             style={{ fontFamily: "var(--font-heading)", color: "var(--text-primary)" }}
           >
             A-AND-I
           </span>
         </div>
-        
-        <nav className="flex items-center gap-2 md:gap-6 text-[10px] md:text-xs font-bold font-mono tracking-widest text-[var(--text-muted)]">
+
+        <nav className="flex items-center gap-2 md:gap-6 text-[9px] md:text-xs font-bold font-mono tracking-wider md:tracking-widest text-[var(--text-muted)] whitespace-nowrap">
           <button 
             onClick={() => openWindow("services")}
             className="hover:text-[var(--accent-primary)] transition-colors duration-200 uppercase cursor-pointer outline-none"
           >
-            [{t.nav.capabilities}]
+            [{t.nav.services}]
           </button>
-          <span className="text-[var(--border-subtle)] select-none">//</span>
+          <span className="hidden sm:inline text-[var(--border-subtle)] select-none">//</span>
           <button 
             onClick={() => openWindow("portfolio")}
             className="hover:text-[var(--accent-primary)] transition-colors duration-200 uppercase cursor-pointer outline-none"
           >
-            [{t.nav.deployed_assets}]
+            [{t.nav.projects}]
           </button>
-          <span className="text-[var(--border-subtle)] select-none">//</span>
+          <span className="hidden sm:inline text-[var(--border-subtle)] select-none">//</span>
           <button 
             onClick={() => openWindow("contact")}
             className="hover:text-[var(--accent-primary)] transition-colors duration-200 uppercase cursor-pointer outline-none"
           >
-            [{t.nav.initialize_system}]
+            [{t.nav.contact}]
           </button>
         </nav>
       </header>
@@ -139,37 +139,33 @@ export default function Desktop() {
             {/* Logo */}
             <div className="relative">
               <h1
-                className="text-7xl md:text-9xl font-black uppercase tracking-tighter leading-none text-center"
+                className="text-[3.25rem] sm:text-7xl md:text-8xl font-black uppercase tracking-tighter leading-none text-center"
                 style={{
                   fontFamily: "var(--font-heading)",
                   color: "var(--text-primary)",
-                  textShadow: "6px 6px 0px var(--accent-primary)",
+                  /* em-based so the offset stays proportional at every breakpoint */
+                  textShadow: "0.055em 0.055em 0 var(--accent-primary)",
                   transition: "color 0.25s ease",
                 }}
               >
                 A-AND-I
               </h1>
-              <div className="absolute -bottom-1 left-0 right-0 h-[4px]" style={{ background: "var(--accent-primary)" }} />
+              <div className="absolute -bottom-1 left-0 right-0 h-[3px]" style={{ background: "var(--accent-primary)" }} />
             </div>
-
-            {/* Guaranteed Spacer: Logo to Subtitle */}
-            <div style={{ height: "48px" }} aria-hidden />
 
             {/* Subtitle */}
             <div
-              className="text-xs md:text-sm tracking-[0.4em] uppercase text-center px-4 font-bold"
+              className="mt-8 text-[10px] md:text-[11px] tracking-[0.3em] uppercase text-center px-4 font-bold"
               style={{ fontFamily: "var(--font-mono)", color: "var(--text-muted)", transition: "color 0.25s" }}
             >
               {t.desktop.subtitle}
             </div>
 
-            {/* Guaranteed Spacer: Subtitle to Description (reduced to group them) */}
-            <div style={{ height: "16px" }} aria-hidden />
-
-            {/* Description paragraph */}
+            {/* Description — sans, not mono: mono is reserved for labels and
+                nav, and it reads poorly at paragraph length. */}
             <p
-              className="text-base md:text-lg max-w-2xl text-center font-mono font-medium tracking-wide leading-relaxed pointer-events-auto px-6"
-              style={{ color: "var(--text-secondary)" }}
+              className="mt-5 text-sm md:text-base max-w-md md:max-w-lg text-center font-normal leading-relaxed pointer-events-auto px-6"
+              style={{ fontFamily: "var(--font-heading)", color: "var(--text-secondary)" }}
             >
               {t.desktop.subheadline}
             </p>

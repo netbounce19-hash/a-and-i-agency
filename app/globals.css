@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap");
 @import "tailwindcss";
 
 /* ══════════════════════════════════════════════════════════════════
@@ -6,8 +5,9 @@
 ══════════════════════════════════════════════════════════════════ */
 :root,
 [data-theme="light"] {
-  --font-heading: "Inter", "Helvetica Neue", "Impact", ui-sans-serif;
-  --font-mono: "JetBrains Mono", "Fira Code", ui-monospace;
+  /* Fed by next/font (see app/layout.tsx) — self-hosted, no external request. */
+  --font-heading: var(--font-inter), "Helvetica Neue", ui-sans-serif;
+  --font-mono: var(--font-jetbrains), "Fira Code", ui-monospace;
 
   /* Surfaces */
   --bg-main:       #F5F4ED; /* Morning Snow */
@@ -30,6 +30,12 @@
   /* Accents */
   --accent-primary: #FF6037; /* Toxic Orange */
   --accent-secondary: #733635; /* Garnet */
+
+  /* Per-column accents for the services grid. Kept as variables so the dark
+     theme can substitute readable variants instead of hardcoded hex. */
+  --accent-col-1: #FF6037;
+  --accent-col-2: #733635;
+  --accent-col-3: #A0C9CB;
 
   /* Taskbar */
   --taskbar-bg:    #ECECDC;
@@ -73,6 +79,11 @@
   --accent-primary: #FF6037;
   --accent-secondary: #A0C9CB;
 
+  /* Garnet is too dark to read on the dark surface — lighten it. */
+  --accent-col-1: #FF6037;
+  --accent-col-2: #C4726F;
+  --accent-col-3: #A0C9CB;
+
   --taskbar-bg:    #2a1614;
   --titlebar-bg:   #733635;
 
@@ -88,16 +99,12 @@
 }
 
 /* ══════════════════════════════════════════════════════════════════
-   RESET
+   BASE
+   NOTE: do NOT add a `*  { margin: 0; padding: 0 }` reset here.
+   Tailwind's Preflight already does it inside `@layer base`, and an
+   unlayered rule outranks every layered one — it would silently kill
+   every padding and margin utility in the app.
 ══════════════════════════════════════════════════════════════════ */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 html,
 body {
   height: 100%;
@@ -105,12 +112,16 @@ body {
   background: var(--bg-main);
   color: var(--text-primary);
   font-family: var(--font-mono);
-  font-size: 14px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  cursor: default;
   transition: background 0.25s ease, color 0.25s ease;
+}
+
+/* Base text size lives on <body>, never on <html>: Tailwind's whole scale is
+   rem-based, so shrinking the root font shrinks every size/height/width too. */
+body {
+  font-size: 14px;
 }
 
 /* ══════════════════════════════════════════════════════════════════
@@ -171,13 +182,14 @@ input,
 textarea {
   font-family: var(--font-mono);
   font-size: 13px;
-  color: var(--terminal-green);
-  background: var(--terminal-bg);
+  color: var(--text-primary);
+  background: transparent;
 }
 
 input::placeholder,
 textarea::placeholder {
-  color: #555;
+  color: var(--text-dim);
+  opacity: 1;
 }
 
 /* ══════════════════════════════════════════════════════════════════

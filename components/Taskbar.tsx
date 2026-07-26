@@ -5,10 +5,10 @@ import { motion } from "framer-motion";
 import { useLang, Lang } from "@/context/LangContext";
 import { useTheme } from "@/context/ThemeContext";
 
-const LANGS: { code: Lang; label: string }[] = [
-  { code: "en", label: "ENGLISH" },
-  { code: "ru", label: "RUSSIAN" },
-  { code: "es", label: "SPANISH" },
+const LANGS: { code: Lang; label: string; short: string }[] = [
+  { code: "en", label: "ENGLISH", short: "EN" },
+  { code: "ru", label: "RUSSIAN", short: "RU" },
+  { code: "es", label: "SPANISH", short: "ES" },
 ];
 
 export default function Taskbar() {
@@ -77,12 +77,12 @@ export default function Taskbar() {
         style={{ border: "2px solid var(--border-subtle)" }}
       >
         <span
-          className="text-[11px] tracking-wider tabular-nums"
+          className="hidden sm:inline text-[11px] tracking-wider tabular-nums"
           style={{ fontFamily: "var(--font-mono)", color: "var(--text-primary)" }}
         >
           {date}
         </span>
-        <span style={{ color: "var(--border-subtle)" }}>|</span>
+        <span className="hidden sm:inline" style={{ color: "var(--border-subtle)" }}>|</span>
         <span
           className="text-[11px] tracking-wider tabular-nums"
           style={{ fontFamily: "var(--font-mono)", color: "var(--text-primary)" }}
@@ -111,8 +111,10 @@ export default function Taskbar() {
               }}
               id={`lang-toggle-${l.code}`}
               aria-label={`Switch to ${l.label}`}
+              aria-pressed={lang === l.code}
             >
-              {l.label}
+              <span className="sm:hidden">{l.short}</span>
+              <span className="hidden sm:inline">{l.label}</span>
             </button>
           </React.Fragment>
         ))}

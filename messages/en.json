@@ -1,33 +1,25 @@
 {
   "nav": {
-    "portfolio": "PORTFOLIO",
     "services": "SERVICES",
-    "contact": "CONTACT",
-    "start": "SYSTEM_START",
-    "capabilities": "SERVICES",
-    "deployed_assets": "PROJECTS",
-    "initialize_system": "CONTACT"
+    "projects": "PROJECTS",
+    "contact": "CONTACT"
   },
   "desktop": {
-    "tagline": "CONSTRUCTIVIST_OS v2.0.26",
-    "subtitle": "A-AND-I AGENCY // DIGITAL ARCHITECTURE STUDIO",
-    "subheadline": "We engineer scalable web platforms and autonomous AI infrastructure to eliminate operational drag and accelerate business growth."
+    "subtitle": "WEB · MOBILE · AI AUTOMATION",
+    "subheadline": "We build scalable web platforms and AI automation that remove manual work and help your business grow."
   },
-  "icons": {
-    "portfolio": "OUR PROJECTS",
-    "services": "OUR SERVICES",
-    "contact": "MAKE REQUEST",
-    "folder": "FOLDER"
+  "common": {
+    "close": "CLOSE"
   },
   "windows": {
     "portfolio": {
-      "title": "//PORTFOLIO_DIRECTORIES",
-      "subtitle": "SELECTED WORKS",
+      "title": "PROJECTS",
+      "subtitle": "SELECTED WORK",
       "projects": [
         {
           "id": "01",
           "name": "Truckers Budget",
-          "tag": "FINANCE // iOS APP",
+          "tag": "FINANCE · iOS APP",
           "desc": "The all-in-one expense, income, and mileage tracker built for truck drivers. Track IRS standard per diem, settlements, loads, expenses, and IFTA recordkeeping. Includes an AI receipt scanner with automation, and online marketing with the creation of an AI influencer.",
           "image": "/images/truckersbudget.webp",
           "links": [
@@ -38,7 +30,7 @@
         {
           "id": "02",
           "name": "Policarbonat-Center",
-          "tag": "B2B_STOREFRONT // NEXT.JS",
+          "tag": "B2B STORE · NEXT.JS",
           "desc": "High-performance B2B digital storefront built on Next.js. Features a smart calculation system and dynamic engineering calculator for precise material estimates.",
           "image": "/images/poly_logo.png",
           "links": [
@@ -48,7 +40,7 @@
         {
           "id": "03",
           "name": "The Gun Store",
-          "tag": "E-COMMERCE // BIZZLEY APP",
+          "tag": "E-COMMERCE · CRM",
           "desc": "Design reflects the cultural code of the legendary Las Vegas location. Features full Bizzley App CRM integration, custom payment system, and automated sales funnels.",
           "image": "/images/gunstore_logo.png",
           "links": [
@@ -58,91 +50,64 @@
       ]
     },
     "services": {
-      "title": "//AGENCY_KERNEL",
-      "subtitle": "CORE_SERVICES // STACK_v3",
+      "title": "SERVICES",
+      "subtitle": "WHAT WE DO",
       "columns": [
         {
           "id": "01",
           "title": "WEB PLATFORMS",
-          "tag": "WEB_ARCHITECTURE",
           "desc": "High-performance websites and online platforms. We build corporate sites, B2B portals, and complex web apps with Next.js architecture and edge-ready deployment."
         },
         {
           "id": "02",
-          "title": "APP DEV",
-          "tag": "MOBILE_SYSTEMS",
+          "title": "MOBILE APPS",
           "desc": "Native and cross-platform mobile solutions. From UX/UI design to full deployment pipeline directly to the App Store and Google Play."
         },
         {
           "id": "03",
           "title": "AI AUTOMATION",
-          "tag": "INTELLIGENCE_LAYER",
           "desc": "Building custom AI automations and solutions for your business processes. We integrate autonomous agents, n8n workflows, and specialized LLMs."
         }
       ],
       "appDevHover": {
-        "title": "APP DEV LIFECYCLE",
-        "bgText": ["APP", "DEV"],
+        "toggle": "HOW WE BUILD",
+        "title": "HOW WE BUILD APPS",
         "steps": [
-          "1. Concept & Solution: Market analysis, prototyping, and architecture planning",
-          "2. MVP Development: Building core functionality for a rapid time-to-market",
-          "3. UI/UX Design: Intuitive interfaces tailored to your target audience",
-          "4. Frontend & Backend: Robust, scalable code and secure API development",
-          "5. Security Implementation: Data protection, encryption, and compliance",
-          "6. Payment Systems: Seamless integration with Stripe, Apple Pay, etc.",
-          "7. App Store Deployment: Full submission, review process, and launch"
+          "Concept: market analysis, prototyping, and architecture planning",
+          "MVP: core functionality for a rapid time-to-market",
+          "UI/UX design: intuitive interfaces tailored to your audience",
+          "Frontend & backend: robust, scalable code and secure APIs",
+          "Security: data protection, encryption, and compliance",
+          "Payments: integration with Stripe, Apple Pay, and more",
+          "Release: App Store submission, review, and launch"
         ]
       }
     },
     "contact": {
-      "title": "//TERMINAL_CONTACT",
-      "subtitle": "ESTABLISH_CONNECTION // INPUT_REQUIRED",
+      "title": "START A PROJECT",
+      "subtitle": "We reply within one business day",
       "fields": {
-        "email": "ENTER_EMAIL",
-        "budget": "ENTER_BUDGET",
-        "task": "DEFINE_TASK"
+        "email": "YOUR EMAIL",
+        "budget": "BUDGET",
+        "task": "ABOUT THE PROJECT"
       },
-      "submit": "EXECUTE",
-      "success": "// TRANSMISSION_SUCCESSFUL. STANDBY FOR RESPONSE.",
       "placeholder": {
-        "email": "your@email.com",
+        "email": "you@company.com",
         "budget": "e.g. $5,000 – $20,000",
-        "task": "Describe your project requirements..."
-      }
-    }
-  },
-  "taskbar": {
-    "time": "SYS_CLOCK",
-    "lang": "LANG"
-  },
-  "sections": {
-    "capabilities": {
-      "title": "SERVICES",
-      "col1": {
-        "title": "01 // WEB ENGINEERING",
-        "content": "Custom web applications, SaaS architectures, high-performance interfaces, and scalable frontend/backend systems."
+        "task": "What do you want to build, and by when?"
       },
-      "col2": {
-        "title": "02 // AUTONOMOUS SYSTEMS",
-        "content": "Context-aware LLM agents, cross-platform workflow orchestration via advanced API integrations, and automated generative media pipelines."
+      "submit": "SEND REQUEST",
+      "sending": "SENDING…",
+      "successTitle": "REQUEST SENT",
+      "success": "Thanks — we've got your request and will reply within one business day.",
+      "reset": "SEND ANOTHER",
+      "fallbackLabel": "Or email us directly:",
+      "errors": {
+        "validation": "Please check the highlighted fields.",
+        "rateLimit": "Too many attempts. Please try again in a minute.",
+        "network": "Connection lost. Check your internet and try again.",
+        "delivery": "We couldn't send your request right now."
       }
-    },
-    "deployed_assets": {
-      "title": "SELECTED PROJECTS",
-      "case1": {
-        "title": "01 // LOGISTICS FINANCE ARCHITECTURE",
-        "desc": "Complex mobile/web application development, precise financial data control, and advanced UI/UX layout."
-      },
-      "case2": {
-        "title": "02 // B2B INTELLECTUAL COMMERCE PIPELINE",
-        "desc": "Deploying an asynchronous LLM sales agent integrated with inventory databases, processing real-time e-commerce operations."
-      }
-    },
-    "initialize": {
-      "title": "REQUEST SYSTEM AUDIT",
-      "desc": "Book a direct discovery call to analyze your operational bottlenecks and map out your digital infrastructure.",
-      "button": "BOOK A CALL",
-      "success": "// TRANSMISSION_SUCCESSFUL. STANDBY FOR RESPONSE."
     }
   }
 }

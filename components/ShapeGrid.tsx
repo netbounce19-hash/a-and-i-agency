@@ -90,15 +90,17 @@ export default function ShapeGrid({
         }
       `}</style>
       <svg width="100%" height="100%">
-        {Array.from({ length: rows }).map((_, row) =>
-          Array.from({ length: cols }).map((_, col) => {
+        {Array.from({ length: rows }).map((_, row) => (
+          /* The row map returns an array, which React cannot key on its own —
+             wrap it so both nesting levels carry a key. */
+          <React.Fragment key={`row-${row}`}>
+            {Array.from({ length: cols }).map((_, col) => {
             const id = `shape-${row}-${col}`;
             const x = col * actualSize;
             const y = row * actualSize;
             const delay = getAnimationDelay(col, row);
 
             const sharedProps = {
-              key: id,
               id: id,
               className: "shape-item pointer-events-auto",
               stroke: borderColor,
@@ -114,6 +116,7 @@ export default function ShapeGrid({
               case "circle":
                 return (
                   <circle
+                    key={id}
                     cx={x + actualSize / 2}
                     cy={y + actualSize / 2}
                     r={actualSize / 2}
@@ -123,6 +126,7 @@ export default function ShapeGrid({
               case "triangle":
                 return (
                   <polygon
+                    key={id}
                     points={`${x + actualSize / 2},${y} ${x + actualSize},${y + actualSize} ${x},${y + actualSize}`}
                     {...sharedProps}
                   />
@@ -130,6 +134,7 @@ export default function ShapeGrid({
               case "hexagon":
                 return (
                   <polygon
+                    key={id}
                     points={`${x + actualSize / 2},${y} ${x + actualSize},${y + actualSize / 4} ${x + actualSize},${y + actualSize * 0.75} ${x + actualSize / 2},${y + actualSize} ${x},${y + actualSize * 0.75} ${x},${y + actualSize / 4}`}
                     {...sharedProps}
                   />
@@ -138,6 +143,7 @@ export default function ShapeGrid({
               default:
                 return (
                   <rect
+                    key={id}
                     x={x}
                     y={y}
                     width={actualSize}
@@ -146,8 +152,9 @@ export default function ShapeGrid({
                   />
                 );
             }
-          })
-        )}
+            })}
+          </React.Fragment>
+        ))}
       </svg>
     </div>
   );

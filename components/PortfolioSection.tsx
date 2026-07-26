@@ -14,14 +14,14 @@ export default function PortfolioSection() {
   
   return (
     <motion.div 
-      className="absolute inset-0 z-50 overflow-y-auto overflow-x-hidden bg-[var(--bg-main)] pt-48 md:pt-[25vh] pb-32 flex flex-col items-center"
+      className="absolute inset-0 z-50 overflow-y-auto overflow-x-hidden bg-[var(--bg-main)] pt-20 md:pt-28 pb-24 flex flex-col items-center"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 20 }}
       transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
     >
       <div className="w-11/12 md:w-10/12 lg:w-5/6 max-w-6xl">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-48 md:mb-[20vh] pointer-events-auto w-full">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-16 md:mb-24 pointer-events-auto w-full">
           <div>
           <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter" style={{ fontFamily: "var(--font-heading)", color: "var(--text-primary)" }}>
             {portfolio.title}
@@ -44,7 +44,7 @@ export default function PortfolioSection() {
           onMouseEnter={(e) => e.currentTarget.style.boxShadow = "0px 0px 0px transparent"}
           onMouseLeave={(e) => e.currentTarget.style.boxShadow = "4px 4px 0px var(--text-primary)"}
         >
-          [X] CLOSE
+✕ {t.common.close}
         </motion.button>
       </div>
 
@@ -70,7 +70,7 @@ export default function PortfolioSection() {
                 <h3 className="text-2xl md:text-4xl font-bold uppercase tracking-tight mb-4" style={{ fontFamily: "var(--font-heading)", color: "var(--text-primary)" }}>
                   {project.name}
                 </h3>
-                <p className="text-base md:text-lg font-normal leading-relaxed max-w-2xl mb-6" style={{ color: "var(--text-secondary)" }}>
+                <p className="text-sm md:text-base font-normal leading-relaxed max-w-2xl mb-6" style={{ fontFamily: "var(--font-heading)", color: "var(--text-secondary)" }}>
                   {project.desc}
                 </p>
               </div>
@@ -118,9 +118,10 @@ export default function PortfolioSection() {
                   <div className="absolute inset-0 translate-x-2 translate-y-2" style={{ backgroundColor: "var(--text-primary)" }} aria-hidden></div>
                   <div className="relative aspect-[4/3] border-4 overflow-hidden bg-[var(--bg-surface-2)]" style={{ borderColor: "var(--text-primary)" }}>
                     <Image 
-                      src={project.image} 
+                      src={project.image}
                       alt={project.name}
                       fill
+                      sizes="(max-width: 640px) 92vw, (max-width: 1024px) 50vw, 350px"
                       className="object-cover grayscale hover:grayscale-0 transition-transform duration-700 hover:scale-105"
                     />
                   </div>

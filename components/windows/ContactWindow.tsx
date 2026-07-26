@@ -1,253 +1,243 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLang } from "@/context/LangContext";
+
+/* TODO: replace with the agency's real inbox — this address is a placeholder. */
+const FALLBACK_EMAIL = "hello@a-and-i.agency";
+
+type FieldName = "email" | "budget" | "task";
+type ErrorKey = "validation" | "rateLimit" | "network" | "delivery";
 
 export default function ContactWindow() {
   const { t } = useLang();
   const { contact } = t.windows;
 
-  const [email, setEmail]       = useState("");
-  const [budget, setBudget]     = useState("");
-  const [task, setTask]         = useState("");
+  const [values, setValues] = useState({ email: "", budget: "", task: "" });
+  const [company, setCompany] = useState(""); // honeypot — humans never fill this
+  const [invalid, setInvalid] = useState<FieldName[]>([]);
+  /* Store the key, not the resolved sentence — otherwise a visible error keeps
+     the wording of whatever language was active when it was raised. */
+  const [errorKey, setErrorKey] = useState<ErrorKey | null>(null);
+  const [sending, setSending] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [cursor, setCursor]     = useState(true);
-  const [lines, setLines]       = useState<string[]>([
-    "// A-AND-I AGENCY — SECURE TERMINAL v2.0",
-    "// CONNECTION ESTABLISHED",
-    "// AWAITING INPUT...",
-    "",
-  ]);
-  const terminalRef = useRef<HTMLDivElement>(null);
 
-  // Blinking cursor
-  useEffect(() => {
-    const iv = setInterval(() => setCursor((c) => !c), 530);
-    return () => clearInterval(iv);
-  }, []);
+  const set = (name: FieldName) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setValues((v) => ({ ...v, [name]: e.target.value }));
+    setInvalid((f) => f.filter((x) => x !== name));
+  };
 
-  // Auto-scroll terminal
-  useEffect(() => {
-    if (terminalRef.current)
-      terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
-  }, [lines]);
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email || !budget || !task) return;
-    setLines((prev) => [
-      ...prev,
-      `> ${contact.fields.email}: ${email}`,
-      `> ${contact.fields.budget}: ${budget}`,
-      `> ${contact.fields.task}: ${task}`,
-      "",
-      "// ENCRYPTING PAYLOAD...",
-      "// TRANSMITTING TO A-AND-I KERNEL...",
-      "████████████████████ 100%",
-      "",
-      contact.success,
-    ]);
-    setSubmitted(true);
+    if (sending) return;
+
+    setSending(true);
+    setErrorKey(null);
+    setInvalid([]);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...values, company }),
+      });
+
+      if (res.ok) {
+        setSubmitted(true);
+        return;
+      }
+
+      const data = await res.json().catch(() => ({}));
+      if (res.status === 429) {
+        setErrorKey("rateLimit");
+      } else if (data?.error === "validation_failed") {
+        setInvalid(Object.keys(data.fieldErrors ?? {}) as FieldName[]);
+        setErrorKey("validation");
+      } else {
+        setErrorKey("delivery");
+      }
+    } catch {
+      setErrorKey("network");
+    } finally {
+      setSending(false);
+    }
   };
 
   const handleReset = () => {
-    setEmail(""); setBudget(""); setTask(""); setSubmitted(false);
-    setLines([
-      "// A-AND-I AGENCY — SECURE TERMINAL v2.0",
-      "// CONNECTION RESET",
-      "// AWAITING NEW INPUT...",
-      "",
-    ]);
+    setValues({ email: "", budget: "", task: "" });
+    setCompany("");
+    setInvalid([]);
+    setErrorKey(null);
+    setSubmitted(false);
   };
 
+  const labelCls = "block text-[10px] tracking-[0.18em] uppercase mb-2 font-bold";
+  const fieldStyle = (name: FieldName): React.CSSProperties => ({
+    fontFamily: "var(--font-mono)",
+    background: "transparent",
+    border: `2px solid ${invalid.includes(name) ? "var(--accent-primary)" : "var(--border-subtle)"}`,
+    color: "var(--text-primary)",
+    transition: "border-color 0.15s",
+  });
+
   return (
-    <div className="flex flex-col" style={{ minHeight: 500 }}>
-
-      {/* ── Terminal log — always dark ── */}
-      <div
-        ref={terminalRef}
-        className="p-4 overflow-y-auto shrink-0"
-        style={{
-          minHeight: 150,
-          maxHeight: 200,
-          background: "var(--terminal-bg)",
-          borderBottom: "2px solid var(--border-main)",
-        }}
-      >
-        {lines.map((line, i) => (
-          <div
-            key={i}
-            className="text-[14px] leading-relaxed"
-            style={{
-              fontFamily: "var(--font-mono)",
-              color: line.startsWith("//")
-                ? "var(--terminal-green)"
-                : line.startsWith(">")
-                ? "var(--accent-secondary)"
-                : line.startsWith("████")
-                ? "var(--accent-primary)"
-                : "#888",
-            }}
+    <div className="p-6 md:p-8" style={{ background: "var(--bg-surface)" }}>
+      <AnimatePresence mode="wait">
+        {!submitted ? (
+          <motion.form
+            key="form"
+            onSubmit={handleSubmit}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="space-y-5"
           >
-            {line || "\u00A0"}
-          </div>
-        ))}
-        {/* Live cursor */}
-        <div
-          className="text-[14px]"
-          style={{ fontFamily: "var(--font-mono)", color: "var(--terminal-green)" }}
-        >
-          {cursor ? "▋" : "\u00A0"}
-        </div>
-      </div>
-
-      {/* ── Input form ── */}
-      <form
-        onSubmit={handleSubmit}
-        className="p-5 space-y-4 flex-1"
-        style={{ background: "var(--bg-surface)" }}
-      >
-        <AnimatePresence mode="wait">
-          {!submitted ? (
-            <motion.div
-              key="form"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="space-y-4"
-            >
-              {/* Email */}
-              <div>
+            {(["email", "budget"] as const).map((name) => (
+              <div key={name}>
                 <label
-                  className="block text-[13px] tracking-widest mb-1 font-bold"
-                  style={{ fontFamily: "var(--font-mono)", color: "var(--terminal-green)" }}
+                  htmlFor={`contact-${name}`}
+                  className={labelCls}
+                  style={{ fontFamily: "var(--font-mono)", color: "var(--text-muted)" }}
                 >
-                  {">"} {contact.fields.email}:
+                  {contact.fields[name]}
                 </label>
                 <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder={contact.placeholder.email}
+                  id={`contact-${name}`}
+                  type={name === "email" ? "email" : "text"}
+                  value={values[name]}
+                  onChange={set(name)}
+                  placeholder={contact.placeholder[name]}
                   required
-                  className="w-full outline-none px-3 py-2 text-[15px]"
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    background: "var(--terminal-bg)",
-                    border: "2px solid var(--border-subtle)",
-                    color: "var(--terminal-green)",
-                    transition: "border-color 0.1s",
-                  }}
-                  onFocus={(e) => (e.currentTarget.style.borderColor = "var(--terminal-green)")}
-                  onBlur={(e)  => (e.currentTarget.style.borderColor = "var(--border-subtle)")}
+                  aria-invalid={invalid.includes(name)}
+                  className="w-full outline-none px-3 py-2.5 text-sm"
+                  style={fieldStyle(name)}
+                  onFocus={(e) => (e.currentTarget.style.borderColor = "var(--text-primary)")}
+                  onBlur={(e) =>
+                    (e.currentTarget.style.borderColor = invalid.includes(name)
+                      ? "var(--accent-primary)"
+                      : "var(--border-subtle)")
+                  }
                 />
               </div>
+            ))}
 
-              {/* Budget */}
-              <div>
-                <label
-                  className="block text-[13px] tracking-widest mb-1 font-bold"
-                  style={{ fontFamily: "var(--font-mono)", color: "var(--accent-secondary)" }}
-                >
-                  {">"} {contact.fields.budget}:
-                </label>
-                <input
-                  type="text"
-                  value={budget}
-                  onChange={(e) => setBudget(e.target.value)}
-                  placeholder={contact.placeholder.budget}
-                  required
-                  className="w-full outline-none px-3 py-2 text-[15px]"
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    background: "var(--terminal-bg)",
-                    border: "2px solid var(--border-subtle)",
-                    color: "var(--accent-secondary)",
-                    transition: "border-color 0.1s",
-                  }}
-                  onFocus={(e) => (e.currentTarget.style.borderColor = "var(--accent-secondary)")}
-                  onBlur={(e)  => (e.currentTarget.style.borderColor = "var(--border-subtle)")}
-                />
-              </div>
-
-              {/* Task */}
-              <div>
-                <label
-                  className="block text-[13px] tracking-widest mb-1 font-bold"
-                  style={{ fontFamily: "var(--font-mono)", color: "var(--accent-primary)" }}
-                >
-                  {">"} {contact.fields.task}:
-                </label>
-                <textarea
-                  value={task}
-                  onChange={(e) => setTask(e.target.value)}
-                  placeholder={contact.placeholder.task}
-                  required
-                  rows={3}
-                  className="w-full outline-none px-3 py-2 resize-none text-[15px]"
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    background: "var(--terminal-bg)",
-                    border: "2px solid var(--border-subtle)",
-                    color: "#fff",
-                    transition: "border-color 0.1s",
-                  }}
-                  onFocus={(e) => (e.currentTarget.style.borderColor = "var(--accent-primary)")}
-                  onBlur={(e)  => (e.currentTarget.style.borderColor = "var(--border-subtle)")}
-                />
-              </div>
-
-              {/* Submit */}
-              <motion.button
-                type="submit"
-                whileHover={{ scale: 1.015 }}
-                whileTap={{ scale: 0.985 }}
-                className="w-full py-4 text-white font-black text-[15px] tracking-[0.4em] uppercase cursor-pointer"
-                style={{
-                  fontFamily: "var(--font-heading)",
-                  background: "var(--accent-primary)",
-                  border: "2px solid var(--accent-primary)",
-                  transition: "background 0.1s",
-                }}
-                onMouseEnter={(e) => ((e.currentTarget as HTMLButtonElement).style.background = "var(--accent-secondary)")}
-                onMouseLeave={(e) => ((e.currentTarget as HTMLButtonElement).style.background = "var(--accent-primary)")}
+            <div>
+              <label
+                htmlFor="contact-task"
+                className={labelCls}
+                style={{ fontFamily: "var(--font-mono)", color: "var(--text-muted)" }}
               >
-                ▶ {contact.submit}
-              </motion.button>
-            </motion.div>
-          ) : (
-            <motion.div
-              key="success"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-center py-10 space-y-5"
+                {contact.fields.task}
+              </label>
+              <textarea
+                id="contact-task"
+                value={values.task}
+                onChange={set("task")}
+                placeholder={contact.placeholder.task}
+                required
+                rows={4}
+                aria-invalid={invalid.includes("task")}
+                className="w-full outline-none px-3 py-2.5 resize-none text-sm"
+                style={fieldStyle("task")}
+                onFocus={(e) => (e.currentTarget.style.borderColor = "var(--text-primary)")}
+                onBlur={(e) =>
+                  (e.currentTarget.style.borderColor = invalid.includes("task")
+                    ? "var(--accent-primary)"
+                    : "var(--border-subtle)")
+                }
+              />
+            </div>
+
+            {/* Honeypot — hidden from humans and assistive tech, bots fill it. */}
+            <div aria-hidden className="absolute left-[-9999px] w-px h-px overflow-hidden">
+              <label htmlFor="company-website">Company website</label>
+              <input
+                id="company-website"
+                name="company"
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+                value={company}
+                onChange={(e) => setCompany(e.target.value)}
+              />
+            </div>
+
+            {errorKey && (
+              <p
+                role="alert"
+                className="text-xs leading-relaxed"
+                style={{ fontFamily: "var(--font-mono)", color: "var(--accent-primary)" }}
+              >
+                {contact.errors[errorKey]}
+                <br />
+                <span style={{ color: "var(--text-muted)" }}>
+                  {contact.fallbackLabel}{" "}
+                  <a href={`mailto:${FALLBACK_EMAIL}`} className="underline">
+                    {FALLBACK_EMAIL}
+                  </a>
+                </span>
+              </p>
+            )}
+
+            <button
+              type="submit"
+              disabled={sending}
+              className="w-full py-3.5 font-black text-[13px] tracking-[0.2em] uppercase cursor-pointer disabled:cursor-wait"
+              style={{
+                fontFamily: "var(--font-heading)",
+                background: "var(--accent-primary)",
+                color: "#fff",
+                border: "2px solid var(--accent-primary)",
+                opacity: sending ? 0.65 : 1,
+                transition: "opacity 0.15s",
+              }}
             >
-              <div
-                className="text-[15px] tracking-widest font-bold"
-                style={{ fontFamily: "var(--font-mono)", color: "var(--terminal-green)" }}
-              >
-                {contact.success}
-              </div>
-              <button
-                onClick={handleReset}
-                className="px-8 py-3 text-[13px] tracking-widest uppercase cursor-pointer font-bold"
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  border: "2px solid var(--border-subtle)",
-                  color: "var(--text-muted)",
-                  background: "transparent",
-                  transition: "border-color 0.1s, color 0.1s",
-                }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--border-main)"; (e.currentTarget as HTMLButtonElement).style.color = "var(--text-primary)"; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--border-subtle)"; (e.currentTarget as HTMLButtonElement).style.color = "var(--text-muted)"; }}
-              >
-                // RESET_TERMINAL
-              </button>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </form>
+              {sending ? contact.sending : contact.submit}
+            </button>
+          </motion.form>
+        ) : (
+          <motion.div
+            key="success"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="py-8 text-center space-y-4"
+          >
+            <div
+              className="text-sm tracking-[0.2em] font-bold uppercase"
+              style={{ fontFamily: "var(--font-mono)", color: "var(--accent-primary)" }}
+            >
+              {contact.successTitle}
+            </div>
+            <p
+              className="text-sm leading-relaxed max-w-xs mx-auto"
+              style={{ fontFamily: "var(--font-heading)", color: "var(--text-secondary)" }}
+            >
+              {contact.success}
+            </p>
+            <button
+              onClick={handleReset}
+              className="mt-2 px-6 py-2.5 text-[11px] tracking-[0.18em] uppercase cursor-pointer font-bold"
+              style={{
+                fontFamily: "var(--font-mono)",
+                border: "2px solid var(--border-subtle)",
+                color: "var(--text-muted)",
+                background: "transparent",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = "var(--text-primary)";
+                e.currentTarget.style.color = "var(--text-primary)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = "var(--border-subtle)";
+                e.currentTarget.style.color = "var(--text-muted)";
+              }}
+            >
+              {contact.reset}
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
